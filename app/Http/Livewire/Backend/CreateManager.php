@@ -6,9 +6,12 @@ use App\Models\Manager;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateManager extends Component
 {
+    use WithFileUploads;
+
     // Attributes
     public $fname;
     public $lname;
@@ -42,7 +45,7 @@ class CreateManager extends Component
             'email' => 'required|email|unique:managers,email',
             'password' => 'required|string|min:8|max:45',
             'status' => 'required|string|in:' . implode(",", Manager::STATUS),
-            'image' => 'nullable|image',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }
 
@@ -50,12 +53,20 @@ class CreateManager extends Component
     {
         $data = $this->validate();
 
+        $imagePath = null;
+        if ($data['image']) {
+            // $imagePath = $data['image']->file('image')->store('images', 'public'); // Store the image in the public disk storage
+            // $data['image'] = $imagePath;
+            $imagePath = $this->image->store('hr/managers', 'public'); // Store the image in the public disk storage
+        }
+
         Manager::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'status' => $data['status'],
+            'image' => $imagePath,
         ]);
 
         return redirect()->route('managers.index');

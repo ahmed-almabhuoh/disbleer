@@ -10,5 +10,7 @@
 
     <x-select label="Status" name="status" :collection="collect($statuses)" />
 
+    <x-file label="Image" name="image" />
+
     <x-action submit-action='update()' cancel-action="cancel" submit-text="update" />
 </form>

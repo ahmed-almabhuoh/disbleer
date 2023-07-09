@@ -36,7 +36,13 @@
                 <tr>
                     <th scope="row">{{ $counter }}</th>
                     @if ($manager->image)
-                        <td> {{ $manager->image }} </td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <img src="{{ Storage::url($manager->image) }}" alt="Profile Photo"
+                                    class="rounded-circle me-2" style="width: 50px; height: 50px; border-radius: 50%;">
+                                {{-- <span class="{{ $manager->status_class }}">{{ __(ucfirst($manager->status)) }}</span> --}}
+                            </div>
+                        </td>
                     @else
                         <td>{{ __('No image') }}</td>
                     @endif
