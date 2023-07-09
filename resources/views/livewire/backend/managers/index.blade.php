@@ -46,7 +46,8 @@
                         <span class="{{ $manager->status_class }}"> {{ __(ucfirst($manager->status)) }} </span>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                        <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($manager->id) }}', this)"
+                            class="btn btn-danger"><i class="bi bi-trash"></i></button>
 
                         <a href="{{ route('managers.edit', Crypt::encrypt($manager->id)) }}" class="btn btn-info"><i
                                 class="bi bi-pencil"></i></a>

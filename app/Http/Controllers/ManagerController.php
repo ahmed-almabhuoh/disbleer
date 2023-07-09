@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Manager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Symfony\Component\HttpFoundation\Response;
 
 class ManagerController extends Controller
 {
@@ -70,5 +71,18 @@ class ManagerController extends Controller
     {
         $manager = Manager::where('id', Crypt::decrypt($id))->first();
         //
+        if ($manager->delete()) {
+            return response()->json([
+                'icon' => 'success',
+                'title' => __('Deleted'),
+                'text' => __('Manager deleted successfully!'),
+            ], Response::HTTP_OK);
+        } else {
+            return response()->json([
+                'icon' => 'error',
+                'title' => __('Failed'),
+                'text' => __('Failed to delete the manager, please try again later!'),
+            ], Response::HTTP_BAD_REQUEST);
+        }
     }
 }
