@@ -39,7 +39,9 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
+
     @yield('styles')
+    @livewireStyles
 </head>
 
 <body>
@@ -62,7 +64,8 @@
                     <li class="breadcrumb-item active">@yield('category')</li>
                 </ol>
             </nav>
-        </div><!-- End Page Title -->
+        </div>
+        <!-- End Page Title -->
 
         <section class="section dashboard">
             <div class="row">
@@ -95,7 +98,10 @@
     <!-- Template Main JS File -->
     <script src="{{ asset('backend/assets/js/main.js') }}"></script>
 
+    @stack('scripts')
     @yield('scripts')
+
+    @livewireScripts
 </body>
 
 </html>

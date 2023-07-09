@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('cpanel')->group(function () {
     Route::get('/', [DashboardController::class, 'getDashboard'])->name('backend.dashboard');
+
+    // Resource Routes
+    Route::resource('managers', ManagerController::class);
 });

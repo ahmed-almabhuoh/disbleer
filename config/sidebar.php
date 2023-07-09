@@ -9,15 +9,14 @@ return [
         'route' => 'backend.dashboard',
     ],
 
-    'dashboard' => [
+    'managers' => [
         'hasSub' => true,
         'subs' => [
-            ['title' => 'Add', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'backend.dashboard'],
+            ['title' => 'Managers', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'managers.index'],
+            ['title' => 'Add Manager', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'managers.create'],
         ],
         'icon' => '<i class="bi bi-grid"></i>',
-        'route' => 'backend.dashboard',
+        'route' => '#',
     ],
-
-
 
 ];

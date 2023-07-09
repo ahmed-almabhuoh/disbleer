@@ -1,4 +1,4 @@
-@include('backend.cpanel')
+@extends('backend.cpanel')
 
 @section('title', 'Title')
 @section('category', 'Title')
