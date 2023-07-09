@@ -39,7 +39,7 @@ class CreateManager extends Component
         return [
             'fname' => 'required|string|min:2|max:45',
             'lname' => 'required|string|min:2|max:45',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:managers,email',
             'password' => 'required|string|min:8|max:45',
             'status' => 'required|string|in:' . implode(",", Manager::STATUS),
             'image' => 'nullable|image',
