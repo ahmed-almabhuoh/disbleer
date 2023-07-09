@@ -24,4 +24,15 @@ class Manager extends Model
     {
         return $query->where('status', 'inactive');
     }
+
+    // Get Attributes
+    public function getNameAttribute()
+    {
+        return $this->fname . ' ' . $this->lname;
+    }
+
+    public function getStatusClassAttribute()
+    {
+        return $this->status == 'active' ? 'badge bg-success py-1 fs-6 rounded-pill' : 'badge bg-secondary py-1 fs-6 rounded-pill';
+    }
 }
