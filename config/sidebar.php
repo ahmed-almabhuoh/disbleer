@@ -29,4 +29,15 @@ return [
         'route' => '#',
     ],
 
+    'disables' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Disables', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'disables.index'],
+            ['title' => 'Add Disable', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'disables.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
+
+
 ];
