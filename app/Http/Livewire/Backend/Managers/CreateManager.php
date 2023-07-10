@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend;
+namespace App\Http\Livewire\Backend\Managers;
 
 use App\Models\Manager;
 use Illuminate\Support\Facades\Hash;
@@ -34,7 +34,7 @@ class CreateManager extends Component
 
     public function render()
     {
-        return view('livewire.backend.create-manager');
+        return view('livewire.backend.managers.create-manager');
     }
 
     public function rules()
