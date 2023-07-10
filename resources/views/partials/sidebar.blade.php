@@ -9,17 +9,21 @@
         @foreach ($navItems as $title => $payload)
             <li class="nav-item">
                 @if (!$payload['hasSub'])
-                    <a class="nav-link " href="{{ $payload['route'] == '#' ?  $payload['route'] : route($payload['route'])}}">
+                    <a class="nav-link "
+                        href="{{ $payload['route'] == '#' ? $payload['route'] : route($payload['route']) }}">
                         <?php echo $payload['icon']; ?>
                         <span>{{ __(ucfirst($title)) }}</span>
                     </a>
                 @else
-                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse"
-                        href="{{ $payload['route'] == '#' ? $payload['route'] :  route($payload['route']) }}">
+                    @php
+                        $parentId = 'forms-nav-' . $loop->index;
+                    @endphp
+                    <a class="nav-link collapsed" data-bs-target="#{{ $parentId }}" data-bs-toggle="collapse"
+                        href="{{ $payload['route'] == '#' ? $payload['route'] : route($payload['route']) }}">
                         <i class="bi bi-journal-text"></i><span>{{ __(ucfirst($title)) }}</span><i
                             class="bi bi-chevron-down ms-auto"></i>
                     </a>
-                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <ul id="{{ $parentId }}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                         @foreach ($payload['subs'] as $sub)
                             <li>

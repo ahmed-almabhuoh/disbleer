@@ -19,4 +19,14 @@ return [
         'route' => '#',
     ],
 
+    'supervisors' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Supervisors', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'supervisors.index'],
+            ['title' => 'Add Supervisor', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'supervisors.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
+
 ];
