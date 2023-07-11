@@ -39,5 +39,14 @@ return [
         'route' => '#',
     ],
 
+    'reports' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Reports', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'reports.index'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
+
 
 ];

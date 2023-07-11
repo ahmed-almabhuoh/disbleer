@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupervisorController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,4 +25,5 @@ Route::prefix('cpanel')->group(function () {
     Route::resource('managers', ManagerController::class);
     Route::resource('supervisors', SupervisorController::class);
     Route::resource('disables', DisableController::class);
+    Route::resource('reports', ReportController::class);
 });
