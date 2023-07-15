@@ -3,6 +3,7 @@
 <div class="{{ $classes }}">
     <label for="{{ $id ?? $name }}" class="form-label"> {{ __($label) }} </label>
     <select id="{{ $id ?? $name }}" wire:model="{{ $model ?? $name }}" name="{{ $name }}"
+        @if ($isMulti) multiple @endif
         class="form-select @error($model ?? $name)
     is-invalid
     @enderror">

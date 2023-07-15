@@ -48,5 +48,15 @@ return [
         'route' => '#',
     ],
 
+    'courses' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Coursers', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'courses.index'],
+            ['title' => 'Add Courser', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'courses.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
+
 
 ];

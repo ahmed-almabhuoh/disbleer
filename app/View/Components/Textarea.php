@@ -6,12 +6,12 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Select extends Component
+class Textarea extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public $label, public $name, public $collection, public $id = null, public $model = null, public $classes = 'col-md-12', public $description = null, public $additional = true, public $isMulti = false)
+    public function __construct(public $label, public $name, public $id = null, public $model = null, public $rowNumber = 3, public $columnNumber = 3, public $description = null, public $isActive = true, public $classes = 'col-md-12')
     {
         //
     }
@@ -21,6 +21,6 @@ class Select extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.select');
+        return view('components.textarea');
     }
 }
