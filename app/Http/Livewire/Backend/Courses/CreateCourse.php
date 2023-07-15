@@ -94,7 +94,7 @@ class CreateCourse extends Component
         $isSaved = $course->save();
 
         if ($isSaved) {
-            return redirect()->route('backend.dashboard');
+            return redirect()->route('courses.index');
         }
     }
 
