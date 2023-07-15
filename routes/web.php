@@ -7,6 +7,7 @@ use App\Http\Controllers\DisableController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupervisorController;
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,7 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::resource('disables', DisableController::class);
     Route::resource('reports', ReportController::class);
     Route::resource('courses', CourseController::class);
+    Route::resource('tests', TestController::class);
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });

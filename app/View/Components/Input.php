@@ -11,7 +11,7 @@ class Input extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $label, public $name, public $id = null, public $placeholder = null, public $model = null, public $classes = 'col-md-12', public $description = null, public $type = 'text')
+    public function __construct(public $label, public $name, public $id = null, public $placeholder = null, public $model = null, public $classes = 'col-md-12', public $description = null, public $type = 'text', public $min = 1, public $max = 100)
     {
         //
     }

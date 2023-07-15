@@ -58,5 +58,14 @@ return [
         'route' => '#',
     ],
 
+    'tests' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Tests', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'tests.index'],
+            ['title' => 'Add Test', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'tests.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
 
 ];

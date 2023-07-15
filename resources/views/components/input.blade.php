@@ -6,7 +6,9 @@
         placeholder="{{ __($placeholder) ?? __('Enter the ' . $name . ' here ...') }}"
         class="form-control @error($model ?? $name)
         is-invalid
-        @enderror">
+        @enderror"
+        @if ($type == 'number') min="{{ $min }}"
+                max="{{ $max }}" @endif>
 
     @error($model ?? $name)
         <div class="invalid-feedback">
