@@ -1,7 +1,7 @@
 @extends('backend.cpanel')
 
-@section('title', $course->name)
-@section('category', $course->name)
+@section('title', $test->name)
+@section('category', $test->name)
 @section('index', __('CMS'))
 
 @section('styles')
@@ -11,9 +11,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title"> {{ __('Update: ') . $course->name }} </h5>
+            <h5 class="card-title"> {{ __('Update: ') . $test->name }} </h5>
 
-            <livewire:backend.courses.update :course="$course" />
+            <livewire:backend.tests.update :test="$test" />
 
         </div>
     </div>

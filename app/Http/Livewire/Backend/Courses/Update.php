@@ -58,7 +58,7 @@ class Update extends Component
 
     public function render()
     {
-        return view('livewire.backend.courses.create-course');
+        return view('livewire.backend.courses.update');
     }
 
     public function rules()
