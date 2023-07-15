@@ -21,4 +21,10 @@ class Test extends Model
 
         return $query->where('status', $status);
     }
+
+
+    public function getStatusClassAttribute()
+    {
+        return $this->status == 'active' ? 'badge bg-success py-1 fs-6 rounded-pill' : 'badge bg-secondary py-1 fs-6 rounded-pill';
+    }
 }

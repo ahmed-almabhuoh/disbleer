@@ -1,7 +1,7 @@
 @extends('backend.cpanel')
 
-@section('title', __('Courses'))
-@section('category', __('Courses'))
+@section('title', __('Tests'))
+@section('category', __('Tests'))
 @section('index', __('CMS'))
 
 @section('styles')
@@ -11,9 +11,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{ __('Show all courses') }}</h5>
+            <h5 class="card-title">{{ __('Show all tests') }}</h5>
 
-            <livewire:backend.courses.index />
+            <livewire:backend.tests.index />
 
         </div>
     </div>
@@ -53,7 +53,7 @@
         }
 
         function deleteAdmin(id, refrance) {
-            axios.delete('/cpanel/courses/' + id)
+            axios.delete('/cpanel/tests/' + id)
                 .then((response) => {
                     refrance.closest('tr').remove();
                     showDeletingMessage(response.data);
