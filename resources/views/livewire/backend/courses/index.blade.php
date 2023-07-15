@@ -50,13 +50,11 @@
                     <th> {{ $course->score }} </th>
 
                     <td>
-                        {{-- <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($course->id) }}', this)"
+                        <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($course->id) }}', this)"
                             class="btn btn-danger"><i class="bi bi-trash"></i></button>
 
                         <a href="{{ route('courses.edit', Crypt::encrypt($course->id)) }}" class="btn btn-info"><i
-                                class="bi bi-pencil"></i></a> --}}
-
-                        Actions HERE
+                                class="bi bi-pencil"></i></a>
                     </td>
                 </tr>
             @endforeach
