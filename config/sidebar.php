@@ -68,4 +68,14 @@ return [
         'route' => '#',
     ],
 
+    'categories' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Category', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'categories.index'],
+            ['title' => 'Add Category', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'categories.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
+
 ];

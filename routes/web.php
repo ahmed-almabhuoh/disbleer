@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
@@ -38,6 +39,7 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::resource('courses', CourseController::class);
     Route::resource('tests', TestController::class);
     Route::resource('questions', QuestionController::class);
+    Route::resource('categories', CategoryController::class);
 
     // Normal Routes
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
