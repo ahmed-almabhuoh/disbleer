@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\TestController;
@@ -36,6 +37,10 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::resource('reports', ReportController::class);
     Route::resource('courses', CourseController::class);
     Route::resource('tests', TestController::class);
+    Route::resource('questions', QuestionController::class);
+
+    // Normal Routes
+    Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });

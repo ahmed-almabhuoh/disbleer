@@ -68,8 +68,12 @@
                         <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($test->id) }}', this)"
                             class="btn btn-danger"><i class="bi bi-trash"></i></button>
 
-                        <a href="{{ route('tests.edit', Crypt::encrypt($test->id)) }}" class="btn btn-info"><i
-                                class="bi bi-pencil"></i></a>
+                        <a href="{{ route('tests.edit', Crypt::encrypt($test->id)) }}" class="btn btn-info">
+                            <i class="bi bi-pencil"></i></a>
+
+                        <a href="{{ route('tests.create-questions', Crypt::encrypt($test->id)) }}" class="btn btn-warning">
+                            <i class="bi bi-question-lg"></i>
+                        </a>
                     </td>
                 </tr>
             @endforeach

@@ -85,4 +85,13 @@ class TestController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    public function getCreateQuestionPage($testId)
+    {
+        $test = Test::byStatus('active')->where('id', Crypt::decrypt($testId))->first();
+
+        return  response()->view('backend.tests.create-questions', [
+            'test' => $test,
+        ]);
+    }
 }

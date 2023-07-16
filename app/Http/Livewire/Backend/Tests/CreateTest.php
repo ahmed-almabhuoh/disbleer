@@ -47,6 +47,7 @@ class CreateTest extends Component
             'time_in_minutes' => 'required|numeric|min:5|max:300',
             'sequential' => 'required|boolean',
             'status' => 'required|in:' . implode(",", Test::STATUS),
+            'tests' => 'array',
         ];
     }
 
