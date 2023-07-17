@@ -9,6 +9,13 @@ return [
         'route' => 'backend.dashboard',
     ],
 
+    'Account Settings' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'managers.account',
+    ],
+
     'managers' => [
         'hasSub' => true,
         'subs' => [

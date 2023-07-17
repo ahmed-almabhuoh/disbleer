@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
+use App\Http\Controllers\ManagerAccountController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReportController;
@@ -43,6 +44,10 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
 
     // Normal Routes
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
+
+    // Account Routes
+    Route::get('account', [ManagerAccountController::class, 'getAccountPage'])->name('managers.account');
+    Route::post('change-password', [ManagerAccountController::class, 'changePassword'])->name('managers.change-password');
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });
