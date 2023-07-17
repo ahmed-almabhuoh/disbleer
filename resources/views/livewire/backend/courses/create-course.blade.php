@@ -7,6 +7,8 @@
 
     <x-select label="Type" name="type" :collection="collect($types)" />
 
+    <x-select label="Category" name="selectedCategory" :collection="collect($catArray)" />
+
     @if ($type == 'external')
         <x-input label="Course Link" name="courseLink" classes="col-12" type="link" />
     @endif

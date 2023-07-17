@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Backend\Courses;
 
+use App\Models\Category;
 use App\Models\Course;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -26,6 +27,9 @@ class CreateCourse extends Component
     public $images;
     public $indicatorName;
     public $tests = [];
+    protected $categories;
+    public $catArray = [];
+    public $selectedCategory;
 
     public function mount()
     {
@@ -42,6 +46,12 @@ class CreateCourse extends Component
         }
 
         $this->courses = Course::byStatus('active')->get();
+
+        $this->categories = Category::byStatus('active')->get();
+
+        foreach ($this->categories as $category) {
+            $this->catArray[$category->id] = $category->title;
+        }
     }
 
     public function render()
@@ -62,7 +72,8 @@ class CreateCourse extends Component
             'indicatorName' => 'required|string',
             'courseLink' => 'nullable|string',
             'pre_courses' => 'nullable',
-            'tests' => 'nullable'
+            'tests' => 'nullable',
+            'selectedCategory' => 'required|integer|exists:categories,id',
         ];
     }
 
@@ -75,6 +86,7 @@ class CreateCourse extends Component
         $course->indicate = $data['indicatorName'];
         $course->status = $data['status'];
         $course->type = $data['type'];
+        $course->category_id = $data['selectedCategory'];
         $course->slug = Str::slug($data['name']);
         $course->link = $data['courseLink'];
         $course->pre_courses = json_encode($data['pre_courses']);

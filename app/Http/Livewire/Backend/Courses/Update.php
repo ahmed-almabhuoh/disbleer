@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Backend\Courses;
 
+use App\Models\Category;
 use App\Models\Course;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -27,6 +28,10 @@ class Update extends Component
     public $indicatorName;
     public $tests = [];
     public $course;
+    protected $categories;
+    public $catArray = [];
+    public $selectedCategory;
+
 
     public function mount()
     {
@@ -44,6 +49,12 @@ class Update extends Component
 
         $this->courses = Course::byStatus('active')->where('id', '!=', $this->course->id)->get();
 
+        $this->categories = Category::byStatus('active')->get();
+
+        foreach ($this->categories as $category) {
+            $this->catArray[$category->id] = $category->title;
+        }
+
         // Initialize Course Values -- Attributes
         $this->name = $this->course->name;
         $this->status = $this->course->status;
@@ -51,6 +62,7 @@ class Update extends Component
         $this->courseLink = $this->course->course_link;
         $this->pre_courses = $this->course->pre_courses;
         $this->courseBlog = $this->course->blog;
+        $this->selectedCategory = $this->course->category_id;
         $this->courseDescription = $this->course->description;
         $this->indicatorName = $this->course->indicator;
         $this->tests = $this->course->tests;
@@ -74,7 +86,8 @@ class Update extends Component
             'indicatorName' => 'required|string',
             'courseLink' => 'nullable|string',
             'pre_courses' => 'nullable',
-            'tests' => 'nullable'
+            'tests' => 'nullable',
+            'selectedCategory' => 'required|integer|unique:categories,id',
         ];
     }
 
@@ -86,6 +99,7 @@ class Update extends Component
         $course->name = $data['name'];
         $course->indicate = $data['indicatorName'];
         $course->status = $data['status'];
+        $course->category_id = $data['selectedCategory'];
         $course->type = $data['type'];
         $course->slug = Str::slug($data['name']);
         $course->link = $data['courseLink'];

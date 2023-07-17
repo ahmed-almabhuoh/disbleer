@@ -14,6 +14,7 @@
                 <th scope="col"> {{ __('Name') }} </th>
                 <th scope="col"> {{ __('Slug') }} </th>
                 <th scope="col"> {{ __('Indicate') }} </th>
+                <th scope="col"> {{ __('Category') }} </th>
                 <th scope="col"> {{ __('Status') }} </th>
                 <th scope="col"> {{ __('Score') }} </th>
                 <th scope="col"> {{ __('Actions') }} </th>
@@ -24,7 +25,7 @@
             @if (!count($courses))
                 <tr>
                     <center>
-                        <td colspan="7">{{ __('No results found ...!') }}</td>
+                        <td colspan="8">{{ __('No results found ...!') }}</td>
                     </center>
                 </tr>
             @endif
@@ -42,6 +43,11 @@
                     <th>{{ __($course->slug) }}</th>
 
                     <th> {{ $course->indicate }} </th>
+
+                    <th>
+                        <a href="{{ route('categories.edit', Crypt::encrypt($course->category->id)) }}">
+                            {{ $course->category->title }}</a>
+                    </th>
 
                     <td>
                         <span class="{{ $course->status_class }}"> {{ __(ucfirst($course->status)) }} </span>
