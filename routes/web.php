@@ -48,6 +48,7 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     // Account Routes
     Route::get('account', [ManagerAccountController::class, 'getAccountPage'])->name('managers.account');
     Route::post('change-password', [ManagerAccountController::class, 'changePassword'])->name('managers.change-password');
+    Route::post('update-information', [ManagerAccountController::class, 'updateAccountInformation'])->name('managers.update-info');
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });

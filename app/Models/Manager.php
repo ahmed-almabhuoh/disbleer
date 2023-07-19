@@ -14,6 +14,20 @@ class Manager extends Authenticatable
         'fname', 'lname', 'email', 'password', 'status', 'image', 'created_at', 'updated_at'
     ];
 
+    public static function booted()
+    {
+        static::created(function (Manager $manager) {
+            ManagerMetaData::create([
+                'country_id' => 1,
+                'manager_id' => $manager->id
+            ]);
+
+            ManagerSocialMedia::create([
+                'manager_id' => $manager->id
+            ]);
+        });
+    }
+
     const STATUS = ['active', 'inactive'];
 
     public function scopeActive($query)
@@ -35,5 +49,16 @@ class Manager extends Authenticatable
     public function getStatusClassAttribute()
     {
         return $this->status == 'active' ? 'badge bg-success py-1 fs-6 rounded-pill' : 'badge bg-secondary py-1 fs-6 rounded-pill';
+    }
+
+    // Relations
+    public function metadata()
+    {
+        return $this->hasOne(ManagerMetaData::class, 'manager_id', 'id');
+    }
+
+    public function socialMedia()
+    {
+        return $this->hasOne(ManagerSocialMedia::class, 'manager_id', 'id');
     }
 }
