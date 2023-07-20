@@ -85,4 +85,14 @@ return [
         'route' => '#',
     ],
 
+    'roles' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Roles', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'roles.index'],
+            ['title' => 'Add Role', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'roles.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+    ],
+
 ];

@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "lwwcas/laravel-countries": "^3.4",
+        "spatie/laravel-permission": "^5.10",
         "webpatser/laravel-countries": "^1.5"
     },
     "require-dev": {
