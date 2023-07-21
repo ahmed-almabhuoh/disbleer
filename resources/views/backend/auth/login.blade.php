@@ -119,6 +119,17 @@
                                                     {{ __('Remember me') }} </label>
                                             </div>
                                         </div>
+
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="as_supervisor"
+                                                    value="true" id="as_supervisor">
+                                                <label class="form-check-label" for="as_supervisor">
+                                                    {{ __('As Supervisor') }} </label>
+                                            </div>
+                                        </div>
+
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">
                                                 {{ __('Login') }}

@@ -3,10 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+// use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Supervisor extends Model
+class Supervisor extends Authenticatable
 {
     use HasFactory, HasRoles;
 
@@ -35,5 +36,11 @@ class Supervisor extends Model
     public function getStatusClassAttribute()
     {
         return $this->status == 'active' ? 'badge bg-success py-1 fs-6 rounded-pill' : 'badge bg-secondary py-1 fs-6 rounded-pill';
+    }
+
+    // Relations
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'supervisor_id', 'id');
     }
 }

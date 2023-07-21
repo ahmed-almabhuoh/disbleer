@@ -18,6 +18,19 @@ return [
         'permissions' => [],
     ],
 
+    'Permissions' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'permissions',
+        'permissions' => [
+            'add-permission' => 'form',
+            'update-permission' => 'index',
+            'delete-permission' => 'index',
+            'show-permissions' => 'index',
+        ]
+    ],
+
     'managers' => [
         'hasSub' => true,
         'subs' => [
@@ -144,19 +157,6 @@ return [
         ]
     ],
 
-    'Permissions' => [
-        'hasSub' => false,
-        'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
-        'route' => 'permissions',
-        'permissions' => [
-            'add-permission' => 'form',
-            'update-permission' => 'index',
-            'delete-permission' => 'index',
-            'show-permissions' => 'index',
-        ]
-    ],
-
 
     'tags' => [
         'hasSub' => true,
@@ -171,6 +171,22 @@ return [
             'update-tag',
             'delete-tag',
             'show-tags',
+        ]
+    ],
+
+    'jobs' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Jobs', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'jobs.index'],
+            ['title' => 'Add Job', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'jobs.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+        'permissions' => [
+            'add-job',
+            'update-job',
+            'delete-job',
+            'show-jobs',
         ]
     ],
 

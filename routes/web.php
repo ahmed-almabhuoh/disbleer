@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\ManagerAccountController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\QuestionController;
@@ -46,6 +47,7 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::resource('categories', CategoryController::class);
     Route::resource('roles', RolesController::class);
     Route::resource('tags', TagController::class);
+    Route::resource('jobs', JobController::class);
 
     // Normal Routes
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');

@@ -67,6 +67,12 @@ return [
         'update-tag',
         'delete-tag',
         'show-tags',
+
+        // Tags
+        'add-job',
+        'update-job',
+        'delete-job',
+        'show-jobs',
     ],
 
     'supervisor' => [],

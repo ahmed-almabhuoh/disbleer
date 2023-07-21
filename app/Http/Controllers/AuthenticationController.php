@@ -29,7 +29,8 @@ class AuthenticationController extends Controller
             'email' => $request->post('email'),
             'password' => $request->post('password'),
         ];
-        if (Auth::guard(Crypt::decrypt($request->post('guard')))->attempt($credentials, $request->post('remember'))) {
+        $guard  = !$request->post('as_supervisor') ? Crypt::decrypt($request->post('guard')) : 'supervisor';
+        if (Auth::guard($guard)->attempt($credentials, $request->post('remember'))) {
             return redirect()->route('backend.dashboard');
         } else {
             return redirect()->route('login', $request->post('guard'))->withErrors([
