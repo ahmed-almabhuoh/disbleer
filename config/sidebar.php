@@ -158,4 +158,21 @@ return [
     ],
 
 
+    'tags' => [
+        'hasSub' => true,
+        'subs' => [
+            ['title' => 'Tags', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'tags.index'],
+            ['title' => 'Add Tag', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'tags.create'],
+        ],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => '#',
+        'permissions' => [
+            'add-tag',
+            'update-tag',
+            'delete-tag',
+            'show-tags',
+        ]
+    ],
+
+
 ];

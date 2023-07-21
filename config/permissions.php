@@ -61,6 +61,12 @@ return [
         // Config
         'dashboard',
         'account-settings',
+
+        // Tags
+        'add-tag',
+        'update-tag',
+        'delete-tag',
+        'show-tags',
     ],
 
     'supervisor' => [],

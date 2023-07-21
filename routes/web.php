@@ -12,6 +12,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SupervisorController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,6 +45,7 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::resource('questions', QuestionController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('roles', RolesController::class);
+    Route::resource('tags', TagController::class);
 
     // Normal Routes
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
