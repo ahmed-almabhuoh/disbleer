@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class CreateManager extends Component
 {
@@ -20,6 +21,8 @@ class CreateManager extends Component
     public $status;
     public $statuses;
     public $image;
+    public $roles = [];
+    public $role;
 
     public function mount()
     {
@@ -30,6 +33,12 @@ class CreateManager extends Component
             $this->statuses[$value] = ucfirst($value);
         }
         $this->password = Str::random(10);
+
+        $guardRoles = Role::where('guard_name', 'manager')->get();
+
+        foreach ($guardRoles as $role) {
+            $this->roles[$role->id] = $role->name;
+        }
     }
 
     public function render()
@@ -46,6 +55,7 @@ class CreateManager extends Component
             'password' => 'required|string|min:8|max:45',
             'status' => 'required|string|in:' . implode(",", Manager::STATUS),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'role' => 'required|integer|exists:roles,id'
         ];
     }
 
@@ -60,7 +70,7 @@ class CreateManager extends Component
             $imagePath = $this->image->store('hr/managers', 'public'); // Store the image in the public disk storage
         }
 
-        Manager::create([
+        $manager = Manager::create([
             'fname' => $data['fname'],
             'lname' => $data['lname'],
             'email' => $data['email'],
@@ -68,6 +78,9 @@ class CreateManager extends Component
             'status' => $data['status'],
             'image' => $imagePath,
         ]);
+
+        $roleObj = Role::where('id', $this->role)->first();
+        $manager->assignRole($roleObj);
 
         return redirect()->route('managers.index');
     }

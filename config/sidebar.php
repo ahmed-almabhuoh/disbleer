@@ -95,4 +95,12 @@ return [
         'route' => '#',
     ],
 
+    'Permissions' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'permissions',
+    ],
+
+
 ];

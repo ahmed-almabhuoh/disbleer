@@ -11,6 +11,7 @@ class Update extends Component
     public $status;
     public $statuses;
     public $role;
+    public $guard_name;
 
     public function mount()
     {
@@ -33,7 +34,7 @@ class Update extends Component
     {
         return [
             'name' => 'required|string|min:2|max:50|unique:roles,name,' . $this->role->id,
-            // 'status' => 'required|in:' . implode(',', Role::STATUS),
+            'guard_name' => 'required|in:manager,supervisor',
         ];
     }
 
@@ -42,6 +43,7 @@ class Update extends Component
         $data = $this->validate();
 
         $this->role->name = $data['name'];
+        $this->role->guard_name = $data['guard_name'];
         $isSaved = $this->role->save();
 
         if ($isSaved) {

@@ -11,6 +11,7 @@ class CreateRole extends Component
     public $name;
     public $status;
     public $statuses;
+    public $guard_name;
 
     public function mount()
     {
@@ -31,9 +32,7 @@ class CreateRole extends Component
     {
         return [
             'name' => 'required|string|min:2|max:50|unique:roles,name',
-            // 'status' => 'nullable|string',
-            // 'icon' => 'nullable|image',
-            // 'status' => 'required|in:' . implode(',', Role::STATUS),
+            'guard_name' => 'required|in:manager,supervisor',
         ];
     }
 
@@ -43,6 +42,7 @@ class CreateRole extends Component
 
         $role = new Role();
         $role->name = $data['name'];
+        $role->guard_name = $data['guard_name'];
         $isSaved = $role->save();
 
         if ($isSaved) {

@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\Permission\Traits\HasRoles;
 
 class Manager extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
 
     protected $fillable = [
         'fname', 'lname', 'email', 'password', 'status', 'image', 'created_at', 'updated_at'

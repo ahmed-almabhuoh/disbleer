@@ -9,6 +9,8 @@
 
     <x-select label="Status" name="status" :collection="collect($statuses)" />
 
+    <x-select label="Role" name="role" :collection="collect($roles)" />
+
     <x-file label="Image" name="image" />
 
     <x-action submit-action='create()' />

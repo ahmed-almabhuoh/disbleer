@@ -6,6 +6,7 @@ use App\Models\Supervisor;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class Update extends Component
 {
@@ -19,6 +20,8 @@ class Update extends Component
     public $statuses;
     public $image;
     public $supervisor;
+    public $roles = [];
+    public $role;
 
     public function mount()
     {
@@ -32,6 +35,12 @@ class Update extends Component
         foreach ($arr as $value) {
             # code...
             $this->statuses[$value] = ucfirst($value);
+        }
+
+        $guardRoles = Role::where('guard_name', 'supervisor')->get();
+
+        foreach ($guardRoles as $role) {
+            $this->roles[$role->id] = $role->name;
         }
     }
 
@@ -49,6 +58,7 @@ class Update extends Component
             'password' => 'nullable|string|min:8|max:45',
             'status' => 'required|string|in:' . implode(",", Supervisor::STATUS),
             'image' => 'nullable|image',
+            'role' => 'required|integer|exists:roles,id'
         ];
     }
 
@@ -85,6 +95,10 @@ class Update extends Component
         }
 
         Supervisor::where('id', '=', $this->supervisor->id)->update($updatedArray);
+
+        $roleObj = Role::where('id', $this->role)->first();
+        $this->supervisor->assignRole($roleObj);
+
         return redirect()->route('supervisors.index');
     }
 

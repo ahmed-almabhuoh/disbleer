@@ -12,6 +12,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col"> {{ __('Name') }} </th>
+                <th scope="col"> {{ __('Guard') }} </th>
                 <th scope="col"> {{ __('Permissions') }} </th>
                 <th scope="col"> {{ __('Actions') }} </th>
             </tr>
@@ -34,9 +35,15 @@
                 <tr>
                     <td scope="row">{{ $counter }}</td>
 
-                    <td>{{ __($role->name) }}</td>
+                    <td>{{ __(ucfirst($role->name)) }}</td>
 
-                    <td> Permissions Here </td>
+                    <td>{{ __(ucfirst($role->guard_name)) }}</td>
+
+                    <td>
+                        <a href="{{ route('permissions.assign', Crypt::encrypt($role->id)) }}"
+                            class="btn btn-outline-info">
+                            {{ __('Permissions') . ' (' . $role->permissions()->count() . ')' }} </a>
+                    </td>
 
                     <td>
                         <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($role->id) }}', this)"
@@ -46,6 +53,10 @@
                                 class="bi bi-pencil"></i></a>
                     </td>
                 </tr>
+
+                @php
+                    ++$counter;
+                @endphp
             @endforeach
 
             <tr wire:loading>

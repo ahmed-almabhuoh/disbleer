@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Supervisor extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRoles;
 
     protected $fillable = [
         'fname', 'lname', 'email', 'password', 'status', 'image', 'created_at', 'updated_at'

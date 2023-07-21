@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
 
 class Update extends Component
 {
@@ -20,6 +21,8 @@ class Update extends Component
     public $statuses;
     public $image;
     public $manager;
+    public $roles = [];
+    public $role;
 
     public function mount()
     {
@@ -33,6 +36,12 @@ class Update extends Component
         foreach ($arr as $value) {
             # code...
             $this->statuses[$value] = ucfirst($value);
+        }
+
+        $guardRoles = Role::where('guard_name', 'manager')->get();
+
+        foreach ($guardRoles as $role) {
+            $this->roles[$role->id] = $role->name;
         }
     }
 
@@ -50,6 +59,7 @@ class Update extends Component
             'password' => 'nullable|string|min:8|max:45',
             'status' => 'required|string|in:' . implode(",", Manager::STATUS),
             'image' => 'nullable|image',
+            'role' => 'required|integer|exists:roles,id'
         ];
     }
 
@@ -86,6 +96,10 @@ class Update extends Component
         }
 
         Manager::where('id', '=', $this->manager->id)->update($updatedArray);
+
+        $roleObj = Role::where('id', $this->role)->first();
+        $this->manager->assignRole($roleObj);
+
         return redirect()->route('managers.index');
     }
 

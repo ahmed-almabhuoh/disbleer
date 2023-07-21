@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -46,6 +47,8 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
 
     // Normal Routes
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
+    Route::get('permissions', [AuthorizationController::class, 'getPermissions'])->name('permissions');
+    Route::get('assign/{id}', [AuthorizationController::class, 'getAssignPage'])->name('permissions.assign');
 
     // Account Routes
     Route::get('account', [ManagerAccountController::class, 'getAccountPage'])->name('managers.account');

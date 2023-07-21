@@ -3,8 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Console\Commands\CreatePermissionsCommand;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,13 +23,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        \App\Models\Manager::factory()->create([
-            'fname' => 'Disbleer',
-            'lname' => 'Disbleer',
-            'email' => 'disbleer@hophearts.com.ps',
-            'password' => Hash::make('password'),
-            'status' => 'active',
-        ]);
+        // \App\Models\Manager::factory()->create([
+        //     'fname' => 'Disbleer',
+        //     'lname' => 'Disbleer',
+        //     'email' => 'disbleer@hophearts.com.ps',
+        //     'password' => Hash::make('password'),
+        //     'status' => 'active',
+        // ]);
 
         // $this->call(\Lwwcas\LaravelCountries\Database\Seeders\LcDatabaseSeeder::class);
     }

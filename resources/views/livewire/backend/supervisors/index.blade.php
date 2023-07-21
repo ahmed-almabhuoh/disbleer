@@ -23,7 +23,7 @@
             @if (!count($supervisors))
                 <tr>
                     <center>
-                        <td colspan="6">{{ __('No results found ...!') }}</td>
+                        <td colspan="7">{{ __('No results found ...!') }}</td>
                     </center>
                 </tr>
             @endif
@@ -52,11 +52,12 @@
                         <span class="{{ $supervisor->status_class }}"> {{ __(ucfirst($supervisor->status)) }} </span>
                     </td>
                     <td>
-                        <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($supervisor->id) }}', this)"
+                        <button type="button"
+                            onclick="confirmationDelete('{{ Crypt::encrypt($supervisor->id) }}', this)"
                             class="btn btn-danger"><i class="bi bi-trash"></i></button>
 
-                        <a href="{{ route('supervisors.edit', Crypt::encrypt($supervisor->id)) }}" class="btn btn-info"><i
-                                class="bi bi-pencil"></i></a>
+                        <a href="{{ route('supervisors.edit', Crypt::encrypt($supervisor->id)) }}"
+                            class="btn btn-info"><i class="bi bi-pencil"></i></a>
                     </td>
                 </tr>
             @endforeach
