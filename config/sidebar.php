@@ -7,6 +7,7 @@ return [
         'subs' => [],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => 'backend.dashboard',
+        'permissions' => [],
     ],
 
     'Account Settings' => [
@@ -14,6 +15,7 @@ return [
         'subs' => [],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => 'managers.account',
+        'permissions' => [],
     ],
 
     'managers' => [
@@ -24,6 +26,12 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-manager' => 'form',
+            'update-manager' => 'index',
+            'delete-manager' => 'index',
+            'show-managers' => 'index',
+        ],
     ],
 
     'supervisors' => [
@@ -34,6 +42,12 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-supervisor' => 'form',
+            'update-supervisor' => 'index',
+            'delete-supervisor' => 'index',
+            'show-supervisors' => 'index',
+        ]
     ],
 
     'disables' => [
@@ -44,6 +58,12 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-disable' => 'form',
+            'update-disable' => 'index',
+            'delete-disable' => 'index',
+            'show-disables' => 'index',
+        ]
     ],
 
     'reports' => [
@@ -53,6 +73,9 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'show-reports' => 'index',
+        ]
     ],
 
     'courses' => [
@@ -63,6 +86,12 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-course' => 'form',
+            'update-course' => 'index',
+            'delete-course' => 'index',
+            'show-courses' => 'index',
+        ]
     ],
 
     'tests' => [
@@ -73,6 +102,12 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-test' => 'form',
+            'update-test' => 'index',
+            'delete-test' => 'index',
+            'show-tests' => 'index',
+        ]
     ],
 
     'categories' => [
@@ -83,6 +118,12 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-category' => 'form',
+            'update-category' => 'index',
+            'delete-category' => 'index',
+            'show-categories' => 'index',
+        ]
     ],
 
     'roles' => [
@@ -93,6 +134,14 @@ return [
         ],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => '#',
+        'permissions' => [
+            'add-role' => 'form',
+            'update-role' => 'index',
+            'delete-role' => 'index',
+            'show-roles' => 'index',
+            'show-roles-permissions' => 'index',
+            'assign-permissions' => 'index',
+        ]
     ],
 
     'Permissions' => [
@@ -100,6 +149,12 @@ return [
         'subs' => [],
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => 'permissions',
+        'permissions' => [
+            'add-permission' => 'form',
+            'update-permission' => 'index',
+            'delete-permission' => 'index',
+            'show-permissions' => 'index',
+        ]
     ],
 
 

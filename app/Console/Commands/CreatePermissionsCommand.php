@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Manager;
 use Illuminate\Console\Command;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class CreatePermissionsCommand extends Command
 {
@@ -28,6 +30,26 @@ class CreatePermissionsCommand extends Command
     {
         //
         $permissionsConfig = config('permissions');
+        $role = [];
+
+        if (!Role::where([
+            ['name', '=', 'Super Manager'],
+            ['guard_name', '=', 'manager'],
+        ])->exists()) {
+            $role = Role::create([
+                'name' => 'Super Manager',
+                'guard_name' => 'manager',
+            ]);
+        } else {
+            $role = Role::where([
+                ['name', '=', 'Super Manager'],
+                ['guard_name', '=', 'manager'],
+            ])->first();
+
+            $manager = Manager::where('email', 'disbleer@hophearts.com.ps')->first();
+            $manager->assignRole($role);
+        }
+
         foreach ($permissionsConfig as $guard => $permissions) {
             foreach ($permissions as $permission) {
 
@@ -35,10 +57,12 @@ class CreatePermissionsCommand extends Command
                     ['name', '=', $permission],
                     ['guard_name', '=', $guard],
                 ])->exists()) {
-                    Permission::create([
+                    $permission = Permission::create([
                         'name' => $permission,
                         'guard_name' => $guard,
                     ]);
+
+                    $role->givePermissionTo($permission);
                 }
             }
         }

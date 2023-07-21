@@ -4,11 +4,14 @@ namespace App\Http\Livewire\Backend\Roles;
 
 use Illuminate\Support\Facades\Crypt;
 use Livewire\Component;
+use Livewire\WithPagination;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class Assign extends Component
 {
+
+    public $searchTerm;
     public $roleId;
     protected $permissions;
     public $showNotification = false;

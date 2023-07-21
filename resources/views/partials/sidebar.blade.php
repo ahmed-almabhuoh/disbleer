@@ -39,26 +39,6 @@
             </li>
         @endforeach
 
-        <!-- ======================================== -->
-
-        <!-- <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-register.html">
-      <i class="bi bi-card-list"></i>
-      <span>Register</span>
-    </a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link collapsed" href="pages-login.html">
-      <i class="bi bi-box-arrow-in-right"></i>
-      <span>Login</span>
-    </a>
-  </li> -->
-        <!-- ======================================== -->
-
-
-
-
     </ul>
 
 </aside>

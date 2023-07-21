@@ -57,6 +57,10 @@ return [
         // Assigning
         'show-roles-permissions',
         'assign-permissions',
+
+        // Config
+        'dashboard',
+        'account-settings',
     ],
 
     'supervisor' => [],
