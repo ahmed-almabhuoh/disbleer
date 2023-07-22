@@ -94,7 +94,7 @@ class CreateCourse extends Component
         $files = [];
         if ($data['images']) {
             foreach ($data['images'] as $image) {
-                $imagePath = $image->store('cms/courses');
+                $imagePath = $image->store('cms/courses', 'public');
                 $files[] = $imagePath;
             }
             $course->images = json_encode($files);

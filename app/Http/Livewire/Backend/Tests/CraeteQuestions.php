@@ -61,7 +61,7 @@ class CraeteQuestions extends Component
             $files = [];
             if ($data['files']) {
                 foreach ($data['files'] as $file) {
-                    $filePath = $file->store('cms/questions');
+                    $filePath = $file->store('cms/questions', 'public');
                     $files[] = $filePath;
                 }
                 $question->files = json_encode($files);
@@ -76,7 +76,7 @@ class CraeteQuestions extends Component
             $files = [];
             if ($data['files']) {
                 foreach ($data['files'] as $file) {
-                    $filePath = $file->store('cms/questions');
+                    $filePath = $file->store('cms/questions', 'public');
                     $files[] = $filePath;
                 }
                 $this->updatedQuestion->files = json_encode($files);

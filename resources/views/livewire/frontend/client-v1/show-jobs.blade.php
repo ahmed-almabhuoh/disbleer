@@ -100,7 +100,8 @@
                             @endif
                         </div>
                         <div class="justify-content-end">
-                            <a class="btn bg-primary text-white"> {{ __('Add Offer') }} </a>
+                            <a class="btn bg-primary text-white" wire:click="jobDetails('{{ $job->slug }}')">
+                                {{ __('Add Offer') }} </a>
                         </div>
                     </div>
 

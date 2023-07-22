@@ -56,7 +56,7 @@ class Update extends Component
         $this->category->status = $data['status'];
 
         if ($data['icon']) {
-            $imagePath = $data['icon']->store('cms/categories');
+            $imagePath = $data['icon']->store('cms/categories', 'public');
             $this->category->icon = $imagePath;
         }
         $isSaved = $this->category->save();

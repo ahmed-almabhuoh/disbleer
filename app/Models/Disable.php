@@ -36,4 +36,10 @@ class Disable extends Authenticatable
     {
         return $this->status == 'active' ? 'badge bg-success py-1 fs-6 rounded-pill' : 'badge bg-secondary py-1 fs-6 rounded-pill';
     }
+
+    // Relations
+    public function proposals()
+    {
+        return $this->hasMany(Proposal::class, 'disable_id', 'id');
+    }
 }

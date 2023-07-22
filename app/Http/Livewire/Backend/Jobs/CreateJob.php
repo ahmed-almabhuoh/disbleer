@@ -82,7 +82,7 @@ class CreateJob extends Component
         $files = [];
         if ($data['files']) {
             foreach ($data['files'] as $file) {
-                $filePath = $file->store('cms/jobs');
+                $filePath = $file->store('cms/jobs', 'public');
                 $files[] = $filePath;
             }
             $job->files = json_encode($files);

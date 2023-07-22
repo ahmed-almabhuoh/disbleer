@@ -38,4 +38,9 @@ class ShowJobs extends Component
             'jobs' => $this->jobs,
         ]);
     }
+
+    public function jobDetails($slug)
+    {
+        return redirect()->route('jobs.details', $slug);
+    }
 }

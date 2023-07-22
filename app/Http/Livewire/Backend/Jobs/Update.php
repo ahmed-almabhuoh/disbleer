@@ -86,13 +86,13 @@ class Update extends Component
         $this->job->to_date = $data['to_date'];
         $this->job->started_salary = $data['started_salary'];
         $this->job->end_salary = $data['end_salary'];
-        $this->job->supervisor_id = auth('supervisor')->user()->id;
+        $this->job->supervisor_id = auth('supervisor')->check() ?  auth('supervisor')->user()->id : auth()->user()->id;
         $this->job->slug = Str::slug($data['title'] . ' ' . time());
 
         $files = [];
         if ($data['files']) {
             foreach ($data['files'] as $file) {
-                $filePath = $file->store('cms/jobs');
+                $filePath = $file->store('cms/jobs', 'public');
                 $files[] = $filePath;
             }
             $this->job->files = json_encode($files);

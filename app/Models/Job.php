@@ -34,4 +34,9 @@ class Job extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function proposals()
+    {
+        return $this->hasMany(Proposal::class, 'job_id', 'id');
+    }
 }

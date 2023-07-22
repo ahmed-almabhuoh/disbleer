@@ -52,7 +52,7 @@ class CreateCategory extends Component
         $category->status = $data['status'];
 
         if ($data['icon']) {
-            $imagePath = $data['icon']->store('cms/categories');
+            $imagePath = $data['icon']->store('cms/categories', 'public');
             $category->icon = $imagePath;
         }
         $isSaved = $category->save();
