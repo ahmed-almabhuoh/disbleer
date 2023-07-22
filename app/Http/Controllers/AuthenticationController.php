@@ -44,6 +44,9 @@ class AuthenticationController extends Controller
         $guard = 'manager';
         if (auth('supervisor')->check()) {
             $guard = 'supervisor';
+        } else if (auth('disable')->check()) {
+            Auth::logout();
+            return redirect()->route('clientv1.login');
         }
 
         Auth::logout();

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\clientv1\AuthenticationController as Clientv1AuthenticationController;
 use App\Http\Controllers\clientv1\DashboardController as Clientv1DashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -59,11 +60,22 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::get('account', [ManagerAccountController::class, 'getAccountPage'])->name('managers.account');
     Route::post('change-password', [ManagerAccountController::class, 'changePassword'])->name('managers.change-password');
     Route::post('update-information', [ManagerAccountController::class, 'updateAccountInformation'])->name('managers.update-info');
+});
 
+Route::middleware('auth:manager,supervisor,disable')->group(function () {
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
 });
 
 
-Route::prefix('client/v1')->group(function () {
-    Route::get('/', [Clientv1DashboardController::class, 'getDashboard'])->name('clientv1.dashboard');
+Route::prefix('client')->middleware('guest:disable')->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::get('login', [Clientv1AuthenticationController::class, 'getLogin'])->name('clientv1.login');
+        Route::post('login', [Clientv1AuthenticationController::class, 'login'])->name('clientv1.submit.login');
+    });
+});
+
+Route::prefix('client')->middleware('auth:disable')->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::get('/', [Clientv1DashboardController::class, 'getDashboard'])->name('clientv1.dashboard');
+    });
 });
