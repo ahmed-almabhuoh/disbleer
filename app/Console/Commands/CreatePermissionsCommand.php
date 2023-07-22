@@ -62,7 +62,8 @@ class CreatePermissionsCommand extends Command
                         'guard_name' => $guard,
                     ]);
 
-                    $role->givePermissionTo($permission);
+                    if ($guard == 'manager')
+                        $role->givePermissionTo($permission);
                 }
             }
         }

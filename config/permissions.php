@@ -68,12 +68,42 @@ return [
         'delete-tag',
         'show-tags',
 
-        // Tags
+        // Jobs
         'add-job',
         'update-job',
         'delete-job',
         'show-jobs',
     ],
 
-    'supervisor' => [],
+    'supervisor' => [
+
+        // Courses
+        'add-course',
+        'update-course',
+        'delete-course',
+        'show-courses',
+
+        // Tests
+        'add-test',
+        'update-test',
+        'delete-test',
+        'show-tests',
+
+        // Config
+        'dashboard',
+        'account-settings',
+
+        // Jobs
+        'add-job',
+        'update-job',
+        'delete-job',
+        'show-jobs',
+
+
+        // Tags
+        'add-tag',
+        'update-tag',
+        'delete-tag',
+        'show-tags',
+    ],
 ];
