@@ -76,7 +76,7 @@ class CreateJob extends Component
         $job->to_date = $data['to_date'];
         $job->started_salary = $data['started_salary'];
         $job->end_salary = $data['end_salary'];
-        $job->supervisor_id = auth('supervisor')->user()->id;
+        $job->supervisor_id = auth('supervisor')->check() ? auth('supervisor')->user()->id : auth()->user()->id;
         $job->slug = Str::slug($data['title'] . ' ' . time());
 
         $files = [];

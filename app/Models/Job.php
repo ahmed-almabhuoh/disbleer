@@ -10,10 +10,18 @@ class Job extends Model
     use HasFactory;
 
     const TYPES = ['full-time', 'part-time'];
+    const STATUS = ['in-progress', 'closed', 'open'];
 
-    public function scopeByType($query, $type)
+    public function scopeByType($query, $type = 'all')
     {
-        return $query->where('type', $type);
+        if ($type !== 'all')
+            return $query->where('type', $type);
+        return $query;
+    }
+
+    public function scopeByStatus($query, $status)
+    {
+        return $query->where('status', $status);
     }
 
     // Relations

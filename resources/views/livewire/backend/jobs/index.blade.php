@@ -44,7 +44,7 @@
                     <td>{{ __($job->title) }}</td>
 
                     @if (auth('manager')->check())
-                        <td>{{ $job->supervisor->name }}</td>
+                        <td>{{ $job->supervisor ? $job->supervisor->name : __('Manager') }}</td>
                     @endif
 
                     <td>{{ $job->started_salary . ' $' }}</td>

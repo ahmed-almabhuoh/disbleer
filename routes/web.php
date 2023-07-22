@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\clientv1\DashboardController as Clientv1DashboardController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
@@ -60,4 +61,9 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::post('update-information', [ManagerAccountController::class, 'updateAccountInformation'])->name('managers.update-info');
 
     Route::get('logout', [AuthenticationController::class, 'logout'])->name('logout');
+});
+
+
+Route::prefix('client/v1')->group(function () {
+    Route::get('/', [Clientv1DashboardController::class, 'getDashboard'])->name('clientv1.dashboard');
 });
