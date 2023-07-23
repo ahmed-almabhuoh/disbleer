@@ -20,6 +20,7 @@
                 <th scope="col"> {{ __('From Date') }} </th>
                 <th scope="col"> {{ __('To Date') }} </th>
                 <th scope="col"> {{ __('Type') }} </th>
+                <th scope="col"> {{ __('Status') }} </th>
                 <th scope="col"> {{ __('Action') }} </th>
             </tr>
         </thead>
@@ -57,16 +58,18 @@
 
                     <td>{{ $job->type }}</td>
 
-                    {{-- <td>
+                    <td>
                         <span class="{{ $job->status_class }}"> {{ __(ucfirst($job->status)) }} </span>
-                    </td> --}}
+                    </td>
 
                     <td>
                         <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($job->id) }}', this)"
                             class="btn btn-danger"><i class="bi bi-trash"></i></button>
 
-                        <a href="{{ route('jobs.edit', Crypt::encrypt($job->id)) }}" class="btn btn-info"><i
-                                class="bi bi-pencil"></i></a>
+                        @if ($job->status == 'in-progress')
+                            <a href="{{ route('jobs.edit', Crypt::encrypt($job->id)) }}" class="btn btn-info"><i
+                                    class="bi bi-pencil"></i></a>
+                        @endif
                     </td>
                 </tr>
 

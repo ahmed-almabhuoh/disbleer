@@ -24,6 +24,12 @@ class Job extends Model
         return $query->where('status', $status);
     }
 
+    // Attributes
+    public function getStatusClassAttribute()
+    {
+        return $this->status == 'open' ? 'badge bg-success py-1 fs-6 rounded-pill' : ($this->status == 'in-progress' ?   'badge bg-secondary py-1 fs-6 rounded-pill' :   'badge bg-danger py-1 fs-6 rounded-pill' );
+    }
+
     // Relations
     public function supervisor()
     {
