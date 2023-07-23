@@ -42,4 +42,9 @@ class Disable extends Authenticatable
     {
         return $this->hasMany(Proposal::class, 'disable_id', 'id');
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_disable', 'disable_id', 'course_id');
+    }
 }

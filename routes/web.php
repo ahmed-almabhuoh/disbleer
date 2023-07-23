@@ -4,8 +4,10 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\clientv1\AuthenticationController as Clientv1AuthenticationController;
+use App\Http\Controllers\clientv1\CoursesController;
 use App\Http\Controllers\clientv1\DashboardController as Clientv1DashboardController;
 use App\Http\Controllers\clientv1\JobsController;
+use App\Http\Controllers\clientv1\ProposalsController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
@@ -81,5 +83,11 @@ Route::prefix('client')->middleware('auth:disable')->group(function () {
 
         // Jobs
         Route::get('job/{slug}', [JobsController::class, 'getJobPage'])->name('jobs.details');
+        Route::get('proposals', [ProposalsController::class, 'getProposalsPage'])->name('clientv1.proposals');
+
+        // Courses
+        Route::get('courses', [CoursesController::class, 'getCoursesPage'])->name('clientv1.courses');
+        Route::get('course/{slug}', [CoursesController::class, 'courseDetails'])->name('clientv1.courses.details');
+        Route::get('course/{id}/enrol', [CoursesController::class, 'enrolling'])->name('clientv1.courses.enrol');
     });
 });

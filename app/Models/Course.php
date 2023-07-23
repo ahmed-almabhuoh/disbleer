@@ -39,4 +39,9 @@ class Course extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function disables()
+    {
+        return $this->belongsToMany(Disable::class, 'course_disable', 'course_id', 'disable_id');
+    }
 }

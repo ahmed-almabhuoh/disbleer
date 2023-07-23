@@ -8,6 +8,25 @@ return [
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => 'clientv1.dashboard',
         'permissions' => [],
+        'isSoon' => false,
+    ],
+
+    'proposals' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'clientv1.proposals',
+        'permissions' => [],
+        'isSoon' => true,
+    ],
+
+    'courses' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'clientv1.courses',
+        'permissions' => [],
+        'isSoon' => false,
     ],
 
 

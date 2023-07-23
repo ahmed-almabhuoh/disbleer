@@ -9,10 +9,18 @@
         @foreach ($navItems as $title => $payload)
             <li class="nav-item">
                 @if (!$payload['hasSub'])
-                    <a class="nav-link "
-                        href="{{ $payload['route'] == '#' ? $payload['route'] : route($payload['route']) }}">
+                    <a class="nav-link"
+                        @if ($payload['isSoon']) href="#"
+                @else
+                    href="{{ $payload['route'] == '#' ? $payload['route'] : route($payload['route']) }}" @endif>
                         <?php echo $payload['icon']; ?>
                         <span>{{ __(ucfirst($title)) }}</span>
+
+                        @if ($payload['isSoon'])
+                            <div class="container">
+                                <small>{{ ' - ' . __('Coming Soon!') }}</small>
+                            </div>
+                        @endif
                     </a>
                 @else
                     @php
