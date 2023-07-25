@@ -11,6 +11,15 @@ return [
         'isSoon' => false,
     ],
 
+    'profile' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'managers.account',
+        'permissions' => [],
+        'isSoon' => false,
+    ],
+
     'proposals' => [
         'hasSub' => false,
         'subs' => [],

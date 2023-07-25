@@ -16,6 +16,21 @@ class Disable extends Authenticatable
 
     const STATUS = ['active', 'inactive'];
 
+    public static function booted()
+    {
+        static::created(function (Disable $disable) {
+            DisableMetaData::create([
+                'country_id' => 1,
+                'disable_id' => $disable->id
+            ]);
+
+            DisableSocialMedia::create([
+                'disable_id' => $disable->id
+            ]);
+        });
+    }
+
+    // Scopes
     public function scopeActive($query)
     {
         return $query->where('status', 'active');
@@ -56,5 +71,15 @@ class Disable extends Authenticatable
     public function credits()
     {
         return $this->hasMany(Credit::class, 'disable_id', 'id');
+    }
+
+    public function metadata()
+    {
+        return $this->hasOne(DisableMetaData::class, 'disable_id', 'id');
+    }
+
+    public function socialMedia()
+    {
+        return $this->hasOne(DisableSocialMedia::class, 'disable_id', 'id');
     }
 }

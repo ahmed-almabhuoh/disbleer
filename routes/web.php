@@ -60,7 +60,9 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
     Route::get('permissions', [AuthorizationController::class, 'getPermissions'])->name('permissions');
     Route::get('assign/{id}', [AuthorizationController::class, 'getAssignPage'])->name('permissions.assign');
+});
 
+Route::prefix('cpanel')->middleware(['auth:manager,supervisor,disable'])->group(function () {
     // Account Routes
     Route::get('account', [ManagerAccountController::class, 'getAccountPage'])->name('managers.account');
     Route::post('change-password', [ManagerAccountController::class, 'changePassword'])->name('managers.change-password');

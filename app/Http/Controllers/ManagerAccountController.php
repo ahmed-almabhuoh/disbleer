@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disable;
+use App\Models\DisableMetaData;
+use App\Models\DisableSocialMedia;
 use App\Models\Manager;
 use App\Models\ManagerMetaData;
 use App\Models\ManagerSocialMedia;
+use App\Models\Supervisor;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,9 +20,15 @@ class ManagerAccountController extends Controller
     //
     public function getAccountPage()
     {
-        return response()->view('backend.account.account', [
-            'country_name' => Country::find(auth()->user()->metadata->country_id)->official_name,
-        ]);
+        if (auth('manager')->check()) {
+            return response()->view('backend.account.account', [
+                'country_name' => Country::find(auth()->user()->metadata->country_id)->official_name,
+            ]);
+        } else if (auth('disable')->check()) {
+            return response()->view('frontend.client-v1.account', [
+                'country_name' => Country::find(auth()->user()->metadata->country_id)->official_name,
+            ]);
+        }
     }
 
     public function changePassword(Request $request)
@@ -34,7 +44,7 @@ class ManagerAccountController extends Controller
         //
 
         if (!$validator->fails()) {
-            $manager = Manager::findOrFail(auth()->user()->id);
+            $manager =  auth('manager')->check() ? Manager::findOrFail(auth()->user()->id) : (auth('disable')->check() ? Disable::findOrFail(auth()->user()->id) : Supervisor::findOrFail(auth()->user()->id));
 
             if (Hash::check($request->post('current_password'), $manager->password)) {
                 $manager->password = Hash::make($request->post('new_password'));
@@ -84,19 +94,47 @@ class ManagerAccountController extends Controller
         //
 
         if (!$validator->fails()) {
+            if (auth('manager')->check()) {
 
-            ManagerMetaData::where('manager_id', '=', auth()->user()->id)->update([
-                'about' => $request->post('about'),
-                'phone' => $request->post('phone'),
-                'address' => $request->post('address')
-            ]);
+                ManagerMetaData::where('manager_id', '=', auth()->user()->id)->update([
+                    'about' => $request->post('about'),
+                    'phone' => $request->post('phone'),
+                    'address' => $request->post('address')
+                ]);
 
-            ManagerSocialMedia::where('manager_id', '=', auth()->user()->id)->update([
-                'twitter' => $request->post('twitter'),
-                'facebook' => $request->post('facebook'),
-                'instagram' => $request->post('instagram'),
-                'linkedin' => $request->post('linkedin')
-            ]);
+                ManagerSocialMedia::where('manager_id', '=', auth()->user()->id)->update([
+                    'twitter' => $request->post('twitter'),
+                    'facebook' => $request->post('facebook'),
+                    'instagram' => $request->post('instagram'),
+                    'linkedin' => $request->post('linkedin')
+                ]);
+            } else if (auth('disable')->check()) {
+                DisableMetaData::where('disable_id', '=', auth()->user()->id)->update([
+                    'about' => $request->post('about'),
+                    'phone' => $request->post('phone'),
+                    'address' => $request->post('address')
+                ]);
+
+                DisableSocialMedia::where('disable_id', '=', auth()->user()->id)->update([
+                    'twitter' => $request->post('twitter'),
+                    'facebook' => $request->post('facebook'),
+                    'instagram' => $request->post('instagram'),
+                    'linkedin' => $request->post('linkedin')
+                ]);
+            } else if (auth('supervisor')->check()) {
+                // SupervisorMetaData::where('supervisor_id', '=', auth()->user()->id)->update([
+                //     'about' => $request->post('about'),
+                //     'phone' => $request->post('phone'),
+                //     'address' => $request->post('address')
+                // ]);
+
+                // SupervisorSocialMedia::where('supervisor_id', '=', auth()->user()->id)->update([
+                //     'twitter' => $request->post('twitter'),
+                //     'facebook' => $request->post('facebook'),
+                //     'instagram' => $request->post('instagram'),
+                //     'linkedin' => $request->post('linkedin')
+                // ]);
+            }
 
             return response()->json([
                 'title' => __('Changed'),
