@@ -24,10 +24,18 @@ class Chatting extends Component
         ]);
     }
 
+    public function rules()
+    {
+        return [
+            'message' => 'required|string',
+        ];
+    }
+
     public function createMessage()
     {
+        $data = $this->validate();
         $message = Message::create([
-            'message' => $this->message,
+            'message' => $data['message'],
             'conversation_id' => Crypt::decrypt($this->conversationId),
             'sender_id' => auth()->user()->id,
             'send_type' => auth('disable')->check() ? 'disable' : 'supervisor',

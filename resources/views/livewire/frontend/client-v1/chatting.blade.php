@@ -6,9 +6,11 @@
                     @php
                         $name = DB::table($_message->send_type . 's')
                             ->where('id', $_message->sender_id)
-                            ->exists() ? DB::table($_message->send_type . 's')
-                            ->where('id', $_message->sender_id)
-                            ->first()->fname : 'N/N';
+                            ->exists()
+                            ? DB::table($_message->send_type . 's')
+                                ->where('id', $_message->sender_id)
+                                ->first()->fname
+                            : 'N/N';
                     @endphp
 
                     <div class="message bg-light p-2 mb-2 rounded">
@@ -26,8 +28,13 @@
                 <!-- Add more chat messages here if needed -->
             </div>
             <div class="input-box mt-4">
-                <input type="text" class="form-control" placeholder="{{ __('Type your message...') }}"
-                    wire:model="message">
+                <input type="text" class="form-control @error('message')  is-invalid @enderror"
+                    placeholder="{{ __('Type your message...') }}" wire:model="message">
+                @error('message')
+                    <div class="invalid-feedback">
+                        {{ __(ucfirst($message)) }}
+                    </div>
+                @enderror
             </div>
             <div class="mt-2">
                 <button class="btn btn-primary" wire:click="createMessage"> {{ __('Send') }} </button>
