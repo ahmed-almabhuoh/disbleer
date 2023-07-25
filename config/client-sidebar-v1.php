@@ -47,6 +47,15 @@ return [
         'isSoon' => false,
     ],
 
+    'logout' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'logout',
+        'permissions' => [],
+        'isSoon' => false,
+    ],
+
 
     // 'supervisors' => [
     //     'hasSub' => true,
