@@ -83,6 +83,7 @@ class SubmitProposal extends Component
             'status' => 'active',
             'disable_id' => auth()->user()->id,
             'transaction_id' => 0,
+            'description' => 'Submit a new proposal for a job',
         ]);
 
         $this->isSubmitted = true;

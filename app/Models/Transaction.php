@@ -23,6 +23,7 @@ class Transaction extends Model
                 'credits' => $transaction->coins,
                 'disable_id' => auth()->user()->id,
                 'transaction_id' => $transaction->id,
+                'description' => 'Refer to a new transaction',
             ]);
         });
     }
