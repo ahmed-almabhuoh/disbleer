@@ -19,6 +19,9 @@
             </div>
         </div>
 
+
+        <livewire:frontend.client-v1.disable-transactions />
+
     </div>
 @endsection
 

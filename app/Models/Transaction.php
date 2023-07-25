@@ -43,6 +43,11 @@ class Transaction extends Model
         return $query->where('status', $status);
     }
 
+    public function scopeOwn($query)
+    {
+        return $query->where('disable_id', auth()->user()->id);
+    }
+
     // Relations
     public function disable()
     {

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Session;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Illuminate\Support\Str;
 
 class PaypalController extends Controller
 {
@@ -22,6 +23,7 @@ class PaypalController extends Controller
             'type' => 'payment',
             'status' => 'pending',
             'disable_id' => auth()->user()->id,
+            'reference_number' => Str::uuid(),
         ]);
 
 
