@@ -76,6 +76,11 @@ Route::prefix('client')->middleware('guest:disable')->group(function () {
     Route::prefix('v1')->group(function () {
         Route::get('login', [Clientv1AuthenticationController::class, 'getLogin'])->name('clientv1.login');
         Route::post('login', [Clientv1AuthenticationController::class, 'login'])->name('clientv1.submit.login');
+
+        Route::get('reg', [Clientv1AuthenticationController::class, 'getReg'])->name('clientv1.reg');
+        Route::post('reg', [Clientv1AuthenticationController::class, 'reg'])->name('clientv1.reg.submit');
+
+        Route::post('terms', [Clientv1AuthenticationController::class, 'terms'])->name('clientv1.terms');
     });
 });
 

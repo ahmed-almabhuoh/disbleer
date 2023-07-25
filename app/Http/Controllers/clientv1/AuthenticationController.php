@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\clientv1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Disable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
@@ -34,5 +36,36 @@ class AuthenticationController extends Controller
                 __('Wrong Credentials!'),
             ]);
         }
+    }
+
+    public function getReg()
+    {
+        return response()->view('frontend.auth.reg');
+    }
+
+    public function reg(Request $request)
+    {
+        $request->validate([
+            'fname' => 'required|string|min:3',
+            'lname' => 'required|string|min:3',
+            'email' => 'required|email',
+            'password' => 'required|string|min:8|max:45',
+        ]);
+
+        $disable = Disable::create([
+            'fname' => $request->post('fname'),
+            'lname' => $request->post('lname'),
+            'email' => $request->post('email'),
+            'password' => Hash::make($request->post('password')),
+        ]);
+
+        Auth::guard('disable')->login($disable);
+
+        return redirect()->route('clientv1.login');
+    }
+
+    public function terms()
+    {
+        dd('Terms');
     }
 }
