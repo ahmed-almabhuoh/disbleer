@@ -11,16 +11,16 @@ class Chatting extends Component
 {
     public $conversationId;
     protected $conversation;
-    protected $messages;
+    protected $userMessages;
     public $messageStored;
 
     public function render()
     {
         $this->conversation = Conversation::where('id', Crypt::decrypt($this->conversationId))->first();
-        $this->messages = $this->conversation->messages;
+        $this->userMessages = $this->conversation->messages;
 
         return view('livewire.frontend.client-v1.chatting', [
-            'messages' => $this->messages,
+            'userMessages' => $this->userMessages,
         ]);
     }
 

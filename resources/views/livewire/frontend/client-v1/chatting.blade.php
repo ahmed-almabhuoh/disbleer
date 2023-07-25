@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="chat-box border rounded p-3" style="height: 300px; overflow-y: auto;">
-                @foreach ($messages as $_message)
+                @foreach ($userMessages as $_message)
                     @php
                         $name = DB::table($_message->send_type . 's')
                             ->where('id', $_message->sender_id)
@@ -18,7 +18,7 @@
                     </div>
                 @endforeach
 
-                @if (!count($messages))
+                @if (!count($userMessages))
                     <center>
                         <h1>
                             {{ __('No messages yet ... !!') }}
