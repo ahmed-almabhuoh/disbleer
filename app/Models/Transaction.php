@@ -15,6 +15,18 @@ class Transaction extends Model
     const TYPE = ['payment', 'withdraw', 'refunds'];
     const STATUS = ['completed', 'pending', 'failed', 'canceled'];
 
+    protected static function booted()
+    {
+        static::created(function (Transaction $transaction) {
+            Credit::create([
+                'amount' => $transaction->amount,
+                'credits' => $transaction->coins,
+                'disable_id' => auth()->user()->id,
+                'transaction_id' => $transaction->id,
+            ]);
+        });
+    }
+
     // Scopes
     public function scopeByMethod($query, $method)
     {
@@ -35,5 +47,10 @@ class Transaction extends Model
     public function disable()
     {
         return $this->belongsTo(Disable::class, 'disable_id', 'id');
+    }
+
+    public function credit()
+    {
+        return $this->hasOne(Credit::class, 'transaction_id', 'id');
     }
 }

@@ -48,7 +48,13 @@ class Disable extends Authenticatable
         return $this->belongsToMany(Course::class, 'course_disable', 'disable_id', 'course_id');
     }
 
-    public function transactions () {
+    public function transactions()
+    {
         return $this->hasMany(Transaction::class, 'disable_id', 'id');
+    }
+
+    public function credits()
+    {
+        return $this->hasMany(Credit::class, 'disable_id', 'id');
     }
 }

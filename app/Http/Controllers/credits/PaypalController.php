@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\credits;
 
 use App\Http\Controllers\Controller;
+use App\Models\Credit;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -86,6 +87,10 @@ class PaypalController extends Controller
                 'description' => 'Completed without errors',
                 'status' => 'completed',
                 'dispatched_order' => json_encode($response),
+            ]);
+
+            Credit::where('transaction_id', Crypt::decrypt($transaction_id))->update([
+                'status' => 'active',
             ]);
 
 
