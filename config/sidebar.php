@@ -84,7 +84,7 @@ return [
         'subs' => [
             ['title' => 'Reports', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'reports.index'],
         ],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-newspaper"></i>',
         'route' => '#',
         'permissions' => [
             'show-reports' => 'index',
