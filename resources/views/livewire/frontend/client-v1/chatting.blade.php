@@ -6,7 +6,9 @@
                     @php
                         $name = DB::table($_message->send_type . 's')
                             ->where('id', $_message->sender_id)
-                            ->first()->fname;
+                            ->exists() ? DB::table($_message->send_type . 's')
+                            ->where('id', $_message->sender_id)
+                            ->first()->fname : 'N/N';
                     @endphp
 
                     <div class="message bg-light p-2 mb-2 rounded">
