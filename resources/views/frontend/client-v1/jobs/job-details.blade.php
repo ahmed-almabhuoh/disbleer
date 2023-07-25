@@ -84,6 +84,7 @@
                         Duration: <span class="text-black-50">{{ $job->from_date . ' - ' . $job->to_date }} </span><br>
                         Average bids are: <span class="text-black-50">${{ $avg }}</span><br>
                         Number: <span class="text-black-50"> {{ $number }} </span><br>
+                        DIST: <span class="text-black-50"> {{ $job->dist_count }} </span><br>
                     </div>
 
 

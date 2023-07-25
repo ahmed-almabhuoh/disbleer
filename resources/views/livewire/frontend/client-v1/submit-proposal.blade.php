@@ -4,6 +4,13 @@
 
     <hr>
 
+    @if (is_null(disableCredits()) && $job->dist_count > disableCredits())
+        <div class="alert alert-warning" role="alert">
+            {{ __('You do not have enought credits to submit a proposal for this job, you can go to ') }} <a
+                href="{{ route('clientv1.credits') }}">{{ __('charge some credits') }}</a>
+        </div>
+    @endif
+
     @if ($allowedToPropose)
         <div class="container">
             @if ($errors->any())
@@ -28,7 +35,7 @@
                         <div class="form-group">
                             <label for="inputField"> {{ __('Delivery period') }} </label>
                             <div class="input-group input-group-sm mt-1">
-                                <input type="text" class="form-control" aria-label="Small" wire:model="period"
+                                <input type="text" class="form-control" aria-label="Small" wire:model="period" @if (is_null(disableCredits()) && $job->dist_count > disableCredits()) readonly="" @endif
                                     aria-describedby="inputGroup-sizing-sm">
                                 <div class="input-group-prepend ">
                                     <span class="input-group-text rounded-0 rounded-end-1 disabled text-black-50"
@@ -44,6 +51,7 @@
                             <label for="inputField"> {{ __('Salary') }} </label>
                             <div class="input-group input-group-sm mt-1">
                                 <input type="text" class="form-control" id="inputField1" aria-label="Small"
+                                    @if (is_null(disableCredits()) && $job->dist_count > disableCredits()) readonly="" @endif
                                     aria-describedby="inputGroup-sizing-sm" wire:model="salary">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text rounded-0 rounded-end-1 disabled text-black-50"
@@ -74,7 +82,7 @@
                 <div class="form-group mt-2">
                     <label for="inputField"> {{ __('Offer details') }} </label>
                     <div class="input-group">
-                        <textarea class="form-control border rounded-1 border-secondary-subtle" name="" id="" cols="100"
+                        <textarea class="form-control border rounded-1 border-secondary-subtle" name="" id="" cols="100" @if (is_null(disableCredits()) && $job->dist_count > disableCredits()) readonly="" @endif
                             wire:model="proposal" rows="10"></textarea>
                     </div>
                 </div>
