@@ -20,7 +20,7 @@
                     @endphp
                     <a class="nav-link collapsed" data-bs-target="#{{ $parentId }}" data-bs-toggle="collapse"
                         href="{{ $payload['route'] == '#' ? $payload['route'] : route($payload['route']) }}">
-                        <i class="bi bi-journal-text"></i><span>{{ __(ucfirst($title)) }}</span><i
+                        <?php echo $payload['icon']; ?><span>{{ __(ucfirst($title)) }}</span><i
                             class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="{{ $parentId }}" class="nav-content collapse " data-bs-parent="#sidebar-nav">
