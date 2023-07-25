@@ -12,7 +12,7 @@ class Chatting extends Component
     public $conversationId;
     protected $conversation;
     protected $messages;
-    public $message;
+    public $messageStored;
 
     public function render()
     {
@@ -27,15 +27,16 @@ class Chatting extends Component
     public function rules()
     {
         return [
-            'message' => 'required|string',
+            'messageStored' => 'required|string',
         ];
     }
 
     public function createMessage()
     {
         $data = $this->validate();
+
         $message = Message::create([
-            'message' => $data['message'],
+            'message' => $data['messageStored'],
             'conversation_id' => Crypt::decrypt($this->conversationId),
             'sender_id' => auth()->user()->id,
             'send_type' => auth('disable')->check() ? 'disable' : 'supervisor',
@@ -45,6 +46,6 @@ class Chatting extends Component
             'last_message_id' => $message->id,
         ]);
         $this->render();
-        $this->message = null;
+        $this->messageStored = null;
     }
 }

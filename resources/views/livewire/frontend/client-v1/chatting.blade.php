@@ -28,9 +28,9 @@
                 <!-- Add more chat messages here if needed -->
             </div>
             <div class="input-box mt-4">
-                <input type="text" class="form-control @error('message')  is-invalid @enderror"
-                    placeholder="{{ __('Type your message...') }}" wire:model="message">
-                @error('message')
+                <input type="text" class="form-control @error('messageStored')  is-invalid @enderror"
+                    placeholder="{{ __('Type your message...') }}" wire:model="messageStored">
+                @error('messageStored')
                     <div class="invalid-feedback">
                         {{ __(ucfirst($message)) }}
                     </div>
