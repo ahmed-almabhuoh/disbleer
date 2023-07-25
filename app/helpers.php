@@ -10,7 +10,8 @@ if (!function_exists('disableCredits')) {
             $creditsSummation = null;
 
             foreach ($credits as $credit) {
-                $creditsSummation += $credit->credits;
+                if ($credit->status == 'active')
+                    $creditsSummation += $credit->credits;
             }
             return $creditsSummation;
         } else {

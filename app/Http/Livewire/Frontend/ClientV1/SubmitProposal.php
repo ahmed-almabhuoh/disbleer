@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Frontend\ClientV1;
 
+use App\Models\Credit;
 use App\Models\Job;
 use App\Models\Proposal;
 use InvalidArgumentException;
@@ -74,6 +75,14 @@ class SubmitProposal extends Component
             'proposal' => $data['proposal'],
             'job_id' => $this->job->id,
             'disable_id' => auth('disable')->user()->id,
+        ]);
+
+        Credit::create([
+            'amount' => 0,
+            'credits' => -1 * $this->job->dist_count,
+            'status' => 'active',
+            'disable_id' => auth()->user()->id,
+            'transaction_id' => 0,
         ]);
 
         $this->isSubmitted = true;
