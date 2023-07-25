@@ -1,4 +1,4 @@
-@extends('backend.cpanel')
+@extends($layout)
 
 @section('title', __('Jobs'))
 @section('category', __('Jobs'))

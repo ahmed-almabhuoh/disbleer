@@ -26,11 +26,15 @@ class Chatting extends Component
 
     public function createMessage()
     {
-        Message::create([
+        $message = Message::create([
             'message' => $this->message,
             'conversation_id' => Crypt::decrypt($this->conversationId),
             'sender_id' => auth()->user()->id,
             'send_type' => auth('disable')->check() ? 'disable' : 'supervisor',
+        ]);
+
+        Conversation::where('id',  Crypt::decrypt($this->conversationId))->update([
+            'last_message_id' => $message->id,
         ]);
         $this->render();
         $this->message = null;

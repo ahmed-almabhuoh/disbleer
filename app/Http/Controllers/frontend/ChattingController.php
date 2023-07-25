@@ -21,15 +21,23 @@ class ChattingController extends Controller
     {
         $proposal = Proposal::where('id', Crypt::decrypt($proposalId))->first();
 
-        $conversation = Conversation::where([
-            ['disable_id', '=', $proposal->disable_id],
-            ['job_id', '=', $proposal->job_id],
-            ['supervisor_id', '=', auth('supervisor')->user()->id],
-        ])->first();
+        if (auth('supervisor')->check())
+            $conversation = Conversation::where([
+                ['disable_id', '=', $proposal->disable_id],
+                ['job_id', '=', $proposal->job_id],
+                ['supervisor_id', '=', auth('supervisor')->user()->id],
+            ])->first();
+        else
+            $conversation = Conversation::where([
+                ['disable_id', '=', $proposal->disable_id],
+                ['job_id', '=', $proposal->job_id],
+                ['supervisor_id', '=', $proposal->job->supervisor_id],
+            ])->first();
 
         if (!is_null($conversation)) {
             return response()->view('frontend.client-v1.chatting.chat', [
                 'conversationId' => Crypt::encrypt($conversation->id),
+                'layout' => auth('supervisor')->check() ? 'backend.cpanel' : 'frontend.layouts.app',
             ]);
         }
 
@@ -41,6 +49,7 @@ class ChattingController extends Controller
 
         return response()->view('frontend.client-v1.chatting.chat', [
             'conversationId' => Crypt::encrypt($conversation->id),
+            'layout' => auth('supervisor')->check() ? 'backend.cpanel' : 'frontend.layouts.app',
         ]);
     }
 }

@@ -26,7 +26,7 @@ return [
         'icon' => '<i class="bi bi-grid"></i>',
         'route' => 'clientv1.proposals',
         'permissions' => [],
-        'isSoon' => true,
+        'isSoon' => false,
     ],
 
     'courses' => [
