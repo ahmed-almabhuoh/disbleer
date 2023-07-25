@@ -29,6 +29,15 @@ return [
         'isSoon' => false,
     ],
 
+    'credits' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'clientv1.credits',
+        'permissions' => [],
+        'isSoon' => false,
+    ],
+
 
     // 'supervisors' => [
     //     'hasSub' => true,

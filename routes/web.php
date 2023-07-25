@@ -5,10 +5,12 @@ use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\clientv1\AuthenticationController as Clientv1AuthenticationController;
 use App\Http\Controllers\clientv1\CoursesController;
+use App\Http\Controllers\clientv1\CreditsController;
 use App\Http\Controllers\clientv1\DashboardController as Clientv1DashboardController;
 use App\Http\Controllers\clientv1\JobsController;
 use App\Http\Controllers\clientv1\ProposalsController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\credits\PaypalController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
 use App\Http\Controllers\JobController;
@@ -89,5 +91,17 @@ Route::prefix('client')->middleware('auth:disable')->group(function () {
         Route::get('courses', [CoursesController::class, 'getCoursesPage'])->name('clientv1.courses');
         Route::get('course/{slug}', [CoursesController::class, 'courseDetails'])->name('clientv1.courses.details');
         Route::get('course/{id}/enrol', [CoursesController::class, 'enrolling'])->name('clientv1.courses.enrol');
+
+        // Charging
+        Route::get('credits', [CreditsController::class, 'getCreditsPage'])->name('clientv1.credits');
+
+        // Paypal
+        Route::controller(PaypalController::class)
+            ->prefix('paypal')
+            ->group(function () {
+                Route::get('handle-payment/{amount}', 'handlePayment')->name('make.payment');
+                Route::get('cancel-payment', 'paymentCancel')->name('cancel.payment');
+                Route::get('payment-success/{id}', 'paymentSuccess')->name('success.payment');
+            });
     });
 });
