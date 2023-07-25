@@ -82,4 +82,9 @@ class Disable extends Authenticatable
     {
         return $this->hasOne(DisableSocialMedia::class, 'disable_id', 'id');
     }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class, 'disable_id', 'id');
+    }
 }

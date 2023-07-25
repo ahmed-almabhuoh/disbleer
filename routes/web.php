@@ -13,6 +13,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\credits\PaypalController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DisableController;
+use App\Http\Controllers\frontend\ChattingController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ManagerAccountController;
 use App\Http\Controllers\ManagerController;
@@ -60,6 +61,9 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
     Route::get('create-questions/{testId}', [TestController::class, 'getCreateQuestionPage'])->name('tests.create-questions');
     Route::get('permissions', [AuthorizationController::class, 'getPermissions'])->name('permissions');
     Route::get('assign/{id}', [AuthorizationController::class, 'getAssignPage'])->name('permissions.assign');
+
+    // Jobs
+    Route::get('job/proposals/{id}', [JobController::class, 'getProposals'])->name('jobs.proposals');
 });
 
 Route::prefix('cpanel')->middleware(['auth:manager,supervisor,disable'])->group(function () {
@@ -67,6 +71,12 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor,disable'])->group(
     Route::get('account', [ManagerAccountController::class, 'getAccountPage'])->name('managers.account');
     Route::post('change-password', [ManagerAccountController::class, 'changePassword'])->name('managers.change-password');
     Route::post('update-information', [ManagerAccountController::class, 'updateAccountInformation'])->name('managers.update-info');
+});
+
+// Conversation
+Route::prefix('chat')->middleware(['auth:manager,supervisor,disable'])->group(function () {
+    Route::get('/', [ChattingController::class, 'conversations'])->name('chats.conversations');
+    Route::get('new-conversation/{jobId}', [ChattingController::class, 'createConversation'])->name('chats.conversations.create');
 });
 
 Route::middleware('auth:manager,supervisor,disable')->group(function () {

@@ -43,4 +43,9 @@ class Supervisor extends Authenticatable
     {
         return $this->hasMany(Job::class, 'supervisor_id', 'id');
     }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class, 'supervisor_id', 'id');
+    }
 }

@@ -45,4 +45,9 @@ class Job extends Model
     {
         return $this->hasMany(Proposal::class, 'job_id', 'id');
     }
+
+    public function conversations()
+    {
+        return $this->hasMany(Conversation::class, 'job_id', 'id');
+    }
 }

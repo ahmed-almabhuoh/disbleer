@@ -82,4 +82,12 @@ class JobController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    // Get Job Proposals
+    public function getProposals($id)
+    {
+        return response()->view('backend.jobs.proposals', [
+            'id' => $id,
+        ]);
+    }
 }

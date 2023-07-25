@@ -47,6 +47,15 @@ return [
         'isSoon' => false,
     ],
 
+    'chat' => [
+        'hasSub' => false,
+        'subs' => [],
+        'icon' => '<i class="bi bi-grid"></i>',
+        'route' => 'chats.conversations',
+        'permissions' => [],
+        'isSoon' => false,
+    ],
+
     'logout' => [
         'hasSub' => false,
         'subs' => [],

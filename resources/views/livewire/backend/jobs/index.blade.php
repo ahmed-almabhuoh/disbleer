@@ -70,6 +70,13 @@
                             <a href="{{ route('jobs.edit', Crypt::encrypt($job->id)) }}" class="btn btn-info"><i
                                     class="bi bi-pencil"></i></a>
                         @endif
+
+                        @if (count($job->proposals))
+                            <a href="{{ route('jobs.proposals', Crypt::encrypt($job->id)) }}" class="btn btn-warning">
+                                <i class="bi bi-file-text"></i>
+                                {{ count($job->proposals) }}
+                            </a>
+                        @endif
                     </td>
                 </tr>
 
