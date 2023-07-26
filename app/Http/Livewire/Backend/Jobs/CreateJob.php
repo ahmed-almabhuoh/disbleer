@@ -60,6 +60,7 @@ class CreateJob extends Component
             'to_date' => 'nullable|date',
             'started_salary' => 'required|numeric|min:1',
             'end_salary' => 'required|numeric|min:1',
+            'tags' => 'nullable|array',
         ];
     }
 
