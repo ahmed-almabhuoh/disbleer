@@ -31,6 +31,7 @@ class Update extends Component
     protected $categories;
     public $catArray = [];
     public $selectedCategory;
+    public $allCourses;
 
 
     public function mount()
@@ -67,6 +68,13 @@ class Update extends Component
         $this->indicatorName = $this->course->indicate;
         $this->tests = $this->course->tests;
         $this->slug = $this->course->slug;
+
+        $courses = Course::byStats('active')->get();
+        $arr = [];
+        foreach ($courses as $course) {
+            $arr[$course->id] = $course->name;
+        }
+        $this->allCourses = $arr;
     }
 
     public function render()

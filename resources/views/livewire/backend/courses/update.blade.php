@@ -13,7 +13,7 @@
         <x-input label="Course Link" name="courseLink" classes="col-12" type="link" />
     @endif
 
-    <x-select label="Prevoius Courses" name="pre_courses" :collection="collect($courses)" :is-multi="true" />
+    <x-select label="Prevoius Courses" name="pre_courses" :collection="collect($allCourses)" :is-multi="true" />
 
     <x-file label="Images" name="images" :is-multi="true" />
 
