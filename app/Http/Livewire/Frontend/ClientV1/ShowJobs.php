@@ -22,6 +22,7 @@ class ShowJobs extends Component
     public function render()
     {
         $this->jobs = Job::byStatus('open')
+            ->latest()
             ->byType($this->partTime && $this->fullTime ? 'all' : ($this->partTime ? 'part-time' : ($this->fullTime ? 'full-time' : 'all')))
             ->where(function ($query) {
                 $query->where('title', 'LIKE', '%' . $this->searchTerm . '%')
