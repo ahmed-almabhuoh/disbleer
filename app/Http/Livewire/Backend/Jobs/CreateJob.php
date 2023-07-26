@@ -52,7 +52,7 @@ class CreateJob extends Component
     {
         return [
             'title' => 'required|string|min:4|max:50',
-            'description' => 'required|string|min:10|max:500',
+            'description' => 'required|string',
             'files' => 'nullable',
             'type' => 'required|string|in:' . implode(",", Job::TYPES),
             'is_limited' => 'required|boolean',
