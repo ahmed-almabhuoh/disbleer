@@ -78,7 +78,7 @@
                     <div class="card-header">{{ $job->supervisor ? $job->supervisor->name : __('Manager') }}</div>
                     <div class="card-body">
                         <h5 class="card-title"> {{ $job->title }} </h5>
-                        {{ Str::limit(ucfirst($job->description), 150, '...') }}
+                        {!! nl2br(e(Str::limit(ucfirst($job->description), 150, '...'))) !!}
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <div class="justify-content-start">
