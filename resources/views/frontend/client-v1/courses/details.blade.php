@@ -71,7 +71,8 @@
 
                             <!-- Enroll button -->
                             @if (auth()->user()->courses()->where('courses.id', $course->id)->exists())
-                                <a href="{{ $course->link }}" class="btn btn-primary btn-block"> {{ __('Go To Course!') }}
+                                <a href="{{ $course->link }}" class="btn btn-primary btn-block" target="_blank">
+                                    {{ __('Go To Course!') }}
                                 </a>
                             @else
                                 <a href="{{ route('clientv1.courses.enrol', Crypt::encrypt($course->id)) }}"
