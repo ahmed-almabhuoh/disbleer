@@ -66,6 +66,7 @@ class Update extends Component
         $this->courseDescription = $this->course->description;
         $this->indicatorName = $this->course->indicate;
         $this->tests = $this->course->tests;
+        $this->slug = $this->course->slug;
     }
 
     public function render()
@@ -101,7 +102,7 @@ class Update extends Component
         $course->status = $data['status'];
         $course->category_id = $data['selectedCategory'];
         $course->type = $data['type'];
-        $course->slug = $this->course->slug;
+        $course->slug = $this->slug;
         $course->link = $data['courseLink'];
         $course->pre_courses = json_encode($data['pre_courses']);
 
