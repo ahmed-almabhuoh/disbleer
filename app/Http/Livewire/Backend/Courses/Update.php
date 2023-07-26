@@ -64,7 +64,7 @@ class Update extends Component
         $this->courseBlog = $this->course->blog;
         $this->selectedCategory = $this->course->category_id;
         $this->courseDescription = $this->course->description;
-        $this->indicatorName = $this->course->indicator;
+        $this->indicatorName = $this->course->indicate;
         $this->tests = $this->course->tests;
     }
 
