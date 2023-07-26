@@ -7,13 +7,15 @@
             @endif --}}
             <span class="d-none d-lg-block">
 
-                @if (auth('manager')->check())
+                {{-- @if (auth('manager')->check())
                     {{ __('Manager') }}
                 @elseif(auth('supervisor')->check())
                     {{ __('Supervisor') }}
                 @elseif(auth('disable')->check())
                     {{ __('Disable') }}
-                @endif
+                @endif --}}
+
+                {{ __(env('APP_NAME')) }}
 
             </span>
         </a>
