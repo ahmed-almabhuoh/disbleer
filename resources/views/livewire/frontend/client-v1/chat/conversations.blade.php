@@ -19,7 +19,11 @@
             <a href="{{ route('chats.conversations.create',Crypt::encrypt($conversation->job->proposals()->where('disable_id', '=', auth()->user()->id)->first()->id)) }}"
                 class="list-group-item list-group-item-action">
                 <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{ ucfirst($conversation->supervisor->name) }}</h5>
+                    @if (!is_null($conversation->supervisor))
+                        <h5 class="mb-1">{{ ucfirst($conversation->supervisor->name) }}</h5>
+                    @else
+                        <h5 class="mb-1">{{ 'N/N' }}</h5>
+                    @endif
                     <small> {{ $conversation->updated_at->diffForHumans() }} </small>
                 </div>
                 <p class="mb-1">
