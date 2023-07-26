@@ -66,4 +66,7 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="my-4"> {{ $roles->links() }} </div>
+
 </div>

@@ -72,4 +72,7 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="my-4"> {{ $courses->links() }} </div>
+
 </div>

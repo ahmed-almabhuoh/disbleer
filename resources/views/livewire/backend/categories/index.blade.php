@@ -60,4 +60,7 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="my-4"> {{ $categories->links() }} </div>
+
 </div>

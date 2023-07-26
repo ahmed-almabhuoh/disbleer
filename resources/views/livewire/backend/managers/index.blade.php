@@ -68,4 +68,7 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="my-4"> {{ $managers->links() }} </div>
+
 </div>

@@ -85,4 +85,7 @@
             </tr>
         </tbody>
     </table>
+
+    <div class="my-4"> {{ $tests->links() }} </div>
+
 </div>
