@@ -18,7 +18,7 @@
                     </h5>
                     <hr>
                     <code style="font-family: sans-serif; font-size: 16px; color: black;">
-                        {{ $job->description }}
+                        {!! nl2br(e($job->description)) !!}
                     </code>
 
                     @if (!is_null($job->files))
