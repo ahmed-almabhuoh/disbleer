@@ -38,7 +38,9 @@
 
                     <th>{{ __($category->title) }}</th>
 
-                    <th>{{ Storage::url($category->icon) }}</th>
+                    <th>
+                        <img src="{{ Storage::url($category->icon) }}" alt="Category">
+                    </th>
 
                     <th>{{ __($category->description) }}</th>
 
