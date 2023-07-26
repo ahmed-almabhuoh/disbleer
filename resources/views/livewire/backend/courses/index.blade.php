@@ -63,6 +63,10 @@
                                 class="bi bi-pencil"></i></a>
                     </td>
                 </tr>
+
+                @php
+                    $counter++;
+                @endphp
             @endforeach
 
             <tr wire:loading>
