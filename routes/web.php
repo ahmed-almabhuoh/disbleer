@@ -37,7 +37,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function(){
-    return response()->view('home');
+    $courses = Course::all();
+
+    return response()->view('home',[
+        'courses' => $courses,
+    ]);
 });
 
 Route::prefix('cpanel')->middleware(['guest:manager,supervisor'])->group(function () {
