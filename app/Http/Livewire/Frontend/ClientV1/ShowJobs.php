@@ -27,8 +27,10 @@ class ShowJobs extends Component
             ->where(function ($query) {
                 $query->where('title', 'LIKE', '%' . $this->searchTerm . '%')
                     ->orWhere('description', 'LIKE', '%' . $this->searchTerm . '%')
-                    ->orWhereBetween('started_salary', [$this->fromPrice, $this->toPrice])
-                    ->orWhereBetween('end_salary', [$this->fromPrice, $this->toPrice])
+                    ->orWhere('started_salary', 'LIKE', '%' . $this->fromPrice . '%')
+                    ->orWhere('end_salary', 'LIKE', '%' . $this->toPrice . '%')
+                    // ->orWhereBetween('started_salary', [$this->fromPrice, $this->toPrice])
+                    // ->orWhereBetween('end_salary', [$this->fromPrice, $this->toPrice])
                     // ->orWhere(function ($subQuery) {
                     //     $subQuery->orWhereBetween('started_salary', [$this->fromPrice, $this->toPrice]);
                     //     $subQuery->orWhereBetween('end_salary', [$this->fromPrice, $this->toPrice]);
