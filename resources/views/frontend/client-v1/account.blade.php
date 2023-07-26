@@ -197,12 +197,12 @@
                                                 @else
                                                     {{ __('No Image') }}
                                                 @endif
-                                                <div class="pt-2">
+                                                {{-- <div class="pt-2">
                                                     <a href="{{ route('managers.edit', Crypt::encrypt(auth()->user()->id)) }}"
                                                         class="btn btn-primary btn-sm"
                                                         title="Upload new profile image"><i
                                                             class="bi bi-upload"></i></a>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
 
