@@ -23,6 +23,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\SupervisorController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\TestController;
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 
 /*
