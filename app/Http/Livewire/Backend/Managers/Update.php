@@ -76,7 +76,7 @@ class Update extends Component
             $imagePath = $this->image->store('hr/managers', 'public'); // Store the image in the public disk storage
         }
 
-        if ($data['password']) {
+        if (is_null($data['password']) || $data['password'] == '') {
             $updatedArray =  [
                 'fname' => $data['fname'],
                 'lname' => $data['lname'],
