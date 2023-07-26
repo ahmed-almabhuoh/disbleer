@@ -36,8 +36,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/d', function(){
-    response()->view('home')
+Route::get('/', function(){
+    return response()->view('home');
 });
 
 Route::prefix('cpanel')->middleware(['guest:manager,supervisor'])->group(function () {
