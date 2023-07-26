@@ -18,7 +18,7 @@ class Job extends Model
     {
         static::created(function (Job $job) {
             Job::where('id', $job->id)->update([
-                'dist_count' => $this->getFivePercent((int) (($job->started_salary + $job->end_salary) / 2) / 2),
+                'dist_count' => getPercent((int) (($job->started_salary + $job->end_salary) / 2) / 2),
             ]);
         });
     }
@@ -61,11 +61,5 @@ class Job extends Model
     public function conversations()
     {
         return $this->hasMany(Conversation::class, 'job_id', 'id');
-    }
-
-    // Helper functions
-    protected function getFivePercent($number)
-    {
-        return $number * 0.05;
     }
 }

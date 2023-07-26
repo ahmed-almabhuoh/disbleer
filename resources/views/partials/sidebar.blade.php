@@ -7,14 +7,17 @@
         @endphp
 
         @foreach ($navItems as $title => $payload)
-            <li class="nav-item">
-                @if (!$payload['hasSub'])
+            @if (!$payload['hasSub'])
+                <li class="nav-item">
+
                     <a class="nav-link "
                         href="{{ $payload['route'] == '#' ? $payload['route'] : route($payload['route']) }}">
                         <?php echo $payload['icon']; ?>
                         <span>{{ __(ucfirst($title)) }}</span>
                     </a>
-                @else
+                </li>
+            @else
+                <li class="nav-item">
                     @php
                         $parentId = 'forms-nav-' . $loop->index;
                     @endphp
@@ -35,8 +38,8 @@
                         @endforeach
 
                     </ul>
-                @endif
-            </li>
+                </li>
+            @endif
         @endforeach
 
     </ul>

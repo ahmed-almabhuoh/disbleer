@@ -24,10 +24,10 @@ return [
         'icon' => '<i class="bi bi-person-up"></i>',
         'route' => 'permissions',
         'permissions' => [
-            'add-permission' => 'form',
+            'add-permission' => 'sidebar',
             'update-permission' => 'index',
             'delete-permission' => 'index',
-            'show-permissions' => 'index',
+            'show-permissions' => 'sidebar',
         ]
     ],
 
@@ -40,10 +40,10 @@ return [
         'icon' => '<i class="bi bi-person-bounding-box"></i>',
         'route' => '#',
         'permissions' => [
-            'add-manager' => 'form',
+            'add-manager' => 'sidebar',
             'update-manager' => 'index',
             'delete-manager' => 'index',
-            'show-managers' => 'index',
+            'show-managers' => 'sidebar',
         ],
     ],
 
@@ -56,10 +56,10 @@ return [
         'icon' => '<i class="bi bi-person-circle"></i>',
         'route' => '#',
         'permissions' => [
-            'add-supervisor' => 'form',
+            'add-supervisor' => 'sidebar',
             'update-supervisor' => 'index',
             'delete-supervisor' => 'index',
-            'show-supervisors' => 'index',
+            'show-supervisors' => 'sidebar',
         ]
     ],
 
@@ -72,10 +72,10 @@ return [
         'icon' => '<i class="bi bi-file-earmark-person"></i>',
         'route' => '#',
         'permissions' => [
-            'add-disable' => 'form',
+            'add-disable' => 'sidebar',
             'update-disable' => 'index',
             'delete-disable' => 'index',
-            'show-disables' => 'index',
+            'show-disables' => 'sidebar',
         ]
     ],
 
@@ -87,7 +87,7 @@ return [
         'icon' => '<i class="bi bi-newspaper"></i>',
         'route' => '#',
         'permissions' => [
-            'show-reports' => 'index',
+            'show-reports' => 'sidebar',
         ]
     ],
 
@@ -100,10 +100,10 @@ return [
         'icon' => '<i class="bi bi-journal-album"></i>',
         'route' => '#',
         'permissions' => [
-            'add-course' => 'form',
+            'add-course' => 'sidebar',
             'update-course' => 'index',
             'delete-course' => 'index',
-            'show-courses' => 'index',
+            'show-courses' => 'sidebar',
         ]
     ],
 
@@ -116,10 +116,10 @@ return [
         'icon' => '<i class="bi bi-question-square"></i>',
         'route' => '#',
         'permissions' => [
-            'add-test' => 'form',
+            'add-test' => 'sidebar',
             'update-test' => 'index',
             'delete-test' => 'index',
-            'show-tests' => 'index',
+            'show-tests' => 'sidebar',
         ]
     ],
 
@@ -132,10 +132,10 @@ return [
         'icon' => '<i class="bi bi-bookmarks"></i>',
         'route' => '#',
         'permissions' => [
-            'add-category' => 'form',
+            'add-category' => 'sidebar',
             'update-category' => 'index',
             'delete-category' => 'index',
-            'show-categories' => 'index',
+            'show-categories' => 'sidebar',
         ]
     ],
 
@@ -148,10 +148,10 @@ return [
         'icon' => '<i class="bi bi-ui-checks-grid"></i>',
         'route' => '#',
         'permissions' => [
-            'add-role' => 'form',
+            'add-role' => 'sidebar',
             'update-role' => 'index',
             'delete-role' => 'index',
-            'show-roles' => 'index',
+            'show-roles' => 'sidebar',
             'show-roles-permissions' => 'index',
             'assign-permissions' => 'index',
         ]
@@ -167,10 +167,10 @@ return [
         'icon' => '<i class="bi bi-hash"></i>',
         'route' => '#',
         'permissions' => [
-            'add-tag',
-            'update-tag',
-            'delete-tag',
-            'show-tags',
+            'add-tag' => 'sidebar',
+            'update-tag' => 'index',
+            'delete-tag' => 'index',
+            'show-tags' => 'sidebar',
         ]
     ],
 
@@ -183,10 +183,10 @@ return [
         'icon' => '<i class="bi bi-pc-display"></i>',
         'route' => '#',
         'permissions' => [
-            'add-job',
-            'update-job',
-            'delete-job',
-            'show-jobs',
+            'add-job' => 'sidebar',
+            'update-job' => 'index',
+            'delete-job' => 'index',
+            'show-jobs' => 'sidebar',
         ]
     ],
 

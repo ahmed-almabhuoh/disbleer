@@ -19,3 +19,10 @@ if (!function_exists('disableCredits')) {
         }
     }
 }
+
+if (!function_exists('getPercent')) {
+    function getPercent($number)
+    {
+        return $number * 0.05;
+    }
+}
