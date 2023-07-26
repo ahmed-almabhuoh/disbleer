@@ -16,7 +16,7 @@ class ShowJobs extends Component
 
     public function mount()
     {
-        $this->jobs = Job::byStatus('open')->orderBy('DESC', 'created_at')->paginate(10);
+        $this->jobs = Job::byStatus('open')->orderBy('asc', 'created_at')->paginate(10);
     }
 
     public function render()
