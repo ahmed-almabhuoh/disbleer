@@ -44,14 +44,18 @@
 
                     <td>{{ $proposal->salary . '$' }}</td>
 
-                    <td style="width: 400px;">{{ $proposal->proposal }}</td>
+                    {{-- <td style="width: 400px;">{{ $proposal->proposal }}</td> --}}
+                    <td style="width: 400px;">
+                        {!! nl2br(e($proposal->proposal)) !!}
+                    </td>
 
                     <td>{{ $proposal->vat }}</td>
 
                     <td>{{ $proposal->created_at->diffForHumans() }}</td>
 
                     <td>
-                        <a href="{{route('chats.conversations.create', Crypt::encrypt($proposal->id))}}" class="btn btn-info"><i class="bi bi-chat"></i></a>
+                        <a href="{{ route('chats.conversations.create', Crypt::encrypt($proposal->id)) }}"
+                            class="btn btn-info"><i class="bi bi-chat"></i></a>
                     </td>
                 </tr>
 
