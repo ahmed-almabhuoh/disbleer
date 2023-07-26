@@ -58,7 +58,10 @@
 
             @foreach ($courses as $course)
                 @php
-                    $courseImage = json_decode($course->images)[0];
+                    $courseImage = '';
+                    if (!is_null($course->images)) {
+                        $courseImage = json_decode($course->images)[0];
+                    }
                 @endphp
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card">
