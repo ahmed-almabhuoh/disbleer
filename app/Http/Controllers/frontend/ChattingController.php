@@ -44,7 +44,7 @@ class ChattingController extends Controller
         $conversation = Conversation::create([
             'disable_id' => $proposal->disable_id,
             'job_id' => $proposal->job_id,
-            'supervisor_id' => auth('supervisor')->user()->id,
+            'supervisor_id' => auth('supervisor')->user() ? auth('supervisor')->user()->id : auth()->user()->id,
         ]);
 
         return response()->view('frontend.client-v1.chatting.chat', [
