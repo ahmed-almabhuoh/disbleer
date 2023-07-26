@@ -257,7 +257,7 @@
         <div class="text-center" data-aos="zoom-in">
           <h3>Together We Rise</h3>
           <p> The real disability is when a person sees himself incapable of thought and development.</p>
-          <a class="cta-btn" href="#">Connect With Us</a>
+          <a class="cta-btn" href="https://disbleer-c.hophearts.com/client/v1/login">Connect With Us</a>
         </div>
 
       </div>
@@ -342,8 +342,7 @@
                 <p class="card-text">{{ $course->description }}</p>
                 <div class="d-flex justify-content-center align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">More details</button>
-
+                    <a href="https://disbleer-c.hophearts.com/client/v1/login" class="btn btn-sm btn-outline-secondary"">More details</a>
                   </div>
                 </div>
               </div>
