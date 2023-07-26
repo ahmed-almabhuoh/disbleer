@@ -36,6 +36,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function(){
+    response()->view('home')
+});
+
 Route::prefix('cpanel')->middleware(['guest:manager,supervisor'])->group(function () {
     Route::get('{guard}/login', [AuthenticationController::class, 'getLoginPage'])->name('login');
     Route::post('/login', [AuthenticationController::class, 'login'])->name('submit.login');
