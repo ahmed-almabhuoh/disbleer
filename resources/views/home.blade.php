@@ -339,8 +339,7 @@
                 alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
                 src="./assets/img/Curses/front.jpg" data-holder-rendered="true">
               <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
+                <p class="card-text">{{ $course->description }}</p>
                 <div class="d-flex justify-content-center align-items-center">
                   <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">More details</button>

@@ -39,7 +39,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
     $courses = Course::all();
-
     return response()->view('home',[
         'courses' => $courses,
     ]);
