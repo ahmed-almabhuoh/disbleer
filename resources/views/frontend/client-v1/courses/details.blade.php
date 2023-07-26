@@ -24,19 +24,21 @@
 
                         <!-- Slides -->
                         <div class="carousel-inner">
-                            @php
-                                $images = json_decode($course->images);
-                            @endphp
-                            @foreach ($images as $index => $imagePath)
-                                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                                    <img src="{{ Storage::url($imagePath) }}" class="d-block w-100"
-                                        alt="Literature {{ $index + 1 }}">
-                                    <div class="carousel-caption">
-                                        <h3>{{ $course->indicate }}</h3>
-                                        <p>{{ $course->name }}</p>
+                            @if ($course->images)
+                                @php
+                                    $images = json_decode($course->images);
+                                @endphp
+                                @foreach ($images as $index => $imagePath)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                        <img src="{{ Storage::url($imagePath) }}" class="d-block w-100"
+                                            alt="Literature {{ $index + 1 }}">
+                                        <div class="carousel-caption">
+                                            <h3>{{ $course->indicate }}</h3>
+                                            <p>{{ $course->name }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @endif
                         </div>
 
                         <!-- Controls -->
