@@ -23,6 +23,7 @@
 
             @foreach ($disable_courses as $course)
                 @php
+                    $firstImage = '';
                     if (!is_null($course->images)) {
                         $firstImage = json_decode($course->images)[0];
                     }
