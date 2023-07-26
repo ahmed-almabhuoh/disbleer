@@ -67,6 +67,7 @@ class Update extends Component
         $this->indicatorName = $this->course->indicate;
         $this->tests = $this->course->tests;
         $this->slug = $this->course->slug;
+        dd($this->course, $this->slug);
     }
 
     public function render()

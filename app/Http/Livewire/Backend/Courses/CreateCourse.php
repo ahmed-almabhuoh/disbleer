@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Backend\Courses;
 
 use App\Models\Category;
 use App\Models\Course;
+use App\Models\Tag;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Str;
@@ -30,6 +31,7 @@ class CreateCourse extends Component
     protected $categories;
     public $catArray = [];
     public $selectedCategory;
+    public $allCourses;
 
     public function mount()
     {
@@ -52,6 +54,13 @@ class CreateCourse extends Component
         foreach ($this->categories as $category) {
             $this->catArray[$category->id] = $category->title;
         }
+
+        $this->allCourses = Course::byStatus('active')->get();
+        $arr_courses = [];
+        foreach ($this->allCourses as $course) {
+            $arr_courses[$course->id] = $course->name;
+        }
+        $this->allCourses = $arr_courses;
     }
 
     public function render()
