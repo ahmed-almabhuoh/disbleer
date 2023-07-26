@@ -24,6 +24,8 @@ class CoursesController extends Controller
     public function courseDetails($slug)
     {
         $course = Course::byStatus('active')->where('slug', $slug)->first();
+        if (is_null($course))
+            return redirect()->route('clientv1.courses');
         return response()->view('frontend.client-v1.courses.details', [
             'course' => $course,
         ]);
