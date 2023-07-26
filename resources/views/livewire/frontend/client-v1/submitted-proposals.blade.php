@@ -44,9 +44,17 @@
                     <td>{{ $proposal->created_at->diffForHumans() }}</td>
 
                     <td>
+                        @php
+                            $creatorId = $proposal->job->supervisor;
+                        @endphp
+                        @if (is_null($proposal->job->supervisor))
+                            @php
+                                $creatorId = App\Models\Manager::where('id', $proposal->job->supervisor_id)->first();
+                            @endphp
+                        @endif
                         @if (App\Models\Conversation::where([
                                 ['disable_id', '=', auth()->user()->id],
-                                ['supervisor_id', '=', $proposal->job->supervisor->id],
+                                ['supervisor_id', '=', $creatorId],
                                 ['job_id', '=', $proposal->job->id],
                             ])->exists())
                             <a href="{{ route('chats.conversations.create', Crypt::encrypt($proposal->id)) }}"
