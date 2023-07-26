@@ -7,6 +7,14 @@
 
     <div class="list-group">
 
+        @if (!count($conversations))
+            <h3>
+                <center>
+                    {{ __('No chats yet !!') }}
+                </center>
+            </h3>
+        @endif
+
         @foreach ($conversations as $conversation)
             <a href="{{ route('chats.conversations.create',Crypt::encrypt($conversation->job->proposals()->where('disable_id', '=', auth()->user()->id)->first()->id)) }}"
                 class="list-group-item list-group-item-action">
