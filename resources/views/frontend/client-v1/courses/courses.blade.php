@@ -31,7 +31,7 @@
                 @endphp
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card">
-                        <img class="card-img-top" src="{{ Storage::url($firstImage) }}" alt="Unsplash">
+                        <img style="height: 150px;" class="card-img-top" src="{{ Storage::url($firstImage) }}" alt="Unsplash">
                         <div class="card-header">
                             <h5 class="card-title mb-0"> {{ $course->name }} </h5>
                         </div>
@@ -66,7 +66,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="card">
                         @if (!is_null($courseImage))
-                            <img style="height: 150px;" class="card-img-top" src="{{ Storage::url($courseImage) }}" alt="Unsplash">
+                            <img class="card-img-top" src="{{ Storage::url($courseImage) }}" alt="Unsplash">
                         @endif
                         <div class="card-header">
                             <h5 class="card-title mb-0"> {{ ucfirst($course->name) }} <small> {{ ' - ' . $course->type }}
