@@ -2,9 +2,9 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-            @if (auth()->user()->image)
+            {{-- @if (auth()->user()->image)
                 <img src="{{ Storage::url(auth()->user()->image) }}" alt="">
-            @endif
+            @endif --}}
             <span class="d-none d-lg-block">
 
                 @if (auth('manager')->check())
