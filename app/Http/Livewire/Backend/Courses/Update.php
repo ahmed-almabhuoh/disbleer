@@ -97,15 +97,14 @@ class Update extends Component
     {
         $data = $this->validate();
 
-        $course = new Course();
-        $course->name = $data['name'];
-        $course->indicate = $data['indicatorName'];
-        $course->status = $data['status'];
-        $course->category_id = $data['selectedCategory'];
-        $course->type = $data['type'];
-        $course->slug = Str::slug($data['name'] . ' ' . time());
-        $course->link = $data['courseLink'];
-        $course->pre_courses = json_encode($data['pre_courses']);
+        $this->course->name = $data['name'];
+        $this->course->indicate = $data['indicatorName'];
+        $this->course->status = $data['status'];
+        $this->course->category_id = $data['selectedCategory'];
+        $this->course->type = $data['type'];
+        $this->course->slug = Str::slug($data['name'] . ' ' . time());
+        $this->course->link = $data['courseLink'];
+        $this->course->pre_courses = json_encode($data['pre_courses']);
 
         $files = [];
         if ($data['images']) {
@@ -113,13 +112,13 @@ class Update extends Component
                 $imagePath = $image->store('cms/courses', 'public');
                 $files[] = $imagePath;
             }
-            $course->images = json_encode($files);
+            $this->course->images = json_encode($files);
         }
 
-        $course->tests = json_encode($data['tests']);
-        $course->description = $data['courseDescription'];
-        $course->blog = $data['courseBlog'];
-        $isSaved = $course->save();
+        $this->course->tests = json_encode($data['tests']);
+        $this->course->description = $data['courseDescription'];
+        $this->course->blog = $data['courseBlog'];
+        $isSaved = $this->course->save();
 
         if ($isSaved) {
             return redirect()->route('courses.index');
