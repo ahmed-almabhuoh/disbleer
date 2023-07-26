@@ -49,7 +49,7 @@ class ChattingController extends Controller
 
         return response()->view('frontend.client-v1.chatting.chat', [
             'conversationId' => Crypt::encrypt($conversation->id),
-            'layout' => auth('supervisor')->check() ? 'backend.cpanel' : 'frontend.layouts.app',
+            'layout' => (auth('supervisor')->check() || auth('manager')->check()) ? 'backend.cpanel' : 'frontend.layouts.app',
         ]);
     }
 }
