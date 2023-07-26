@@ -22,7 +22,7 @@ class ManagerAccountController extends Controller
     {
         if (auth('manager')->check()) {
             return response()->view('backend.account.account', [
-                'country_name' => Country::find(auth()->user()->metadata->country_id)->official_name,
+                'country_name' => auth()->user()->metadata->country_id ? Country::find(auth()->user()->metadata->country_id)->official_name : Country::find(1)->official_name,
             ]);
         } else if (auth('disable')->check()) {
             return response()->view('frontend.client-v1.account', [
