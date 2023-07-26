@@ -29,17 +29,20 @@
                                 $counter = 1;
                             @endphp
 
-                            @foreach (json_decode($job->files) as $file)
-                                <div class="file">
+                            @if (!is_null($job->files))
+                                @foreach (json_decode($job->files) as $file)
+                                    <div class="file">
 
-                                    <a href="{{ Storage::url($file) }}"><span
-                                            class="file-name">{{ __('File') . ' ' . $counter }}</span></a>
-                                </div>
+                                        <a href="{{ Storage::url($file) }}"><span
+                                                class="file-name">{{ __('File') . ' ' . $counter }}</span></a>
+                                    </div>
 
-                                @php
-                                    ++$counter;
-                                @endphp
-                            @endforeach
+                                    @php
+                                        ++$counter;
+                                    @endphp
+                                @endforeach
+                            @endif
+
 
                         </div>
                     </div>
