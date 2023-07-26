@@ -87,7 +87,7 @@ class Update extends Component
             'courseLink' => 'nullable|string',
             'pre_courses' => 'nullable',
             'tests' => 'nullable',
-            'selectedCategory' => 'required|integer|unique:categories,id',
+            'selectedCategory' => 'required|integer',
         ];
     }
 
