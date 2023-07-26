@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col"> {{ __('Icon') }} </th>
                 <th scope="col"> {{ __('Title') }} </th>
                 <th scope="col"> {{ __('Description') }} </th>
                 <th scope="col"> {{ __('Status') }} </th>
@@ -37,6 +38,8 @@
 
                     <th>{{ __($category->title) }}</th>
 
+                    <th>{{ Storage::url($category->icon) }}</th>
+
                     <th>{{ __($category->description) }}</th>
 
                     <td>
@@ -44,7 +47,8 @@
                     </td>
 
                     <td>
-                        <button type="button" onclick="confirmationDelete('{{ Crypt::encrypt($category->id) }}', this)"
+                        <button type="button"
+                            onclick="confirmationDelete('{{ Crypt::encrypt($category->id) }}', this)"
                             class="btn btn-danger"><i class="bi bi-trash"></i></button>
 
                         <a href="{{ route('categories.edit', Crypt::encrypt($category->id)) }}" class="btn btn-info"><i
