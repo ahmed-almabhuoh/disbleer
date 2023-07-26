@@ -1,4 +1,16 @@
 <div class="card">
+    @if (Session::has('success'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('success') }}
+        </div>
+    @endif
+
+    @if (Session::has('error'))
+        <div class="alert alert-success" role="alert">
+            {{ Session::get('error') }}
+        </div>
+    @endif
+
     <div class="card-header">
         <h4 class="text-center"> {{ __('Charge Account with DIST Coins') }} </h4>
     </div>
@@ -17,12 +29,13 @@
             </div>
             <div class="form-group mt-2">
                 <label for="coinsAmount"> {{ __('Coins - DIST') }} </label>
-                <input type="text" class="form-control @error('coins') is-invalid @enderror" id="coinsAmount" readonly wire:model="coins">
+                <input type="text" class="form-control @error('coins') is-invalid @enderror" id="coinsAmount"
+                    readonly wire:model="coins">
                 @error('coins')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-            @enderror
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <button type="button" wire:click="submitPayment" class="btn btn-primary btn-block mt-4">
                 {{ __('Pay Now!') }} </button>
