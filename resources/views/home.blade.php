@@ -80,7 +80,7 @@
           </ul>
 
         </nav><!-- .navbar -->
-        <li><a class="getstarted scrollto" href="#about">Get started</a></li>
+        <li><a class="getstarted scrollto" href="https://disbleer-c.hophearts.com/client/v1/login">Get started</a></li>
 
         <i class="bi bi-list mobile-nav-toggle"></i>
 
@@ -94,7 +94,7 @@
       <h1>If we stick together, we will become better societies
       </h1>
       <h2>Our goal is to help people with special needs and provide them with all forms of assistance</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      <a href="https://disbleer-c.hophearts.com/client/v1/login" class="btn-get-started scrollto">Get Started</a>
     </div>
   </section><!-- End Hero -->
 
