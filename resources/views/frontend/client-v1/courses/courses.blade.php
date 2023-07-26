@@ -20,6 +20,7 @@
 
         <h3 class="fw-bold d-flex gap-2 flex-wrap "> {{ __('My Courses') }} </h3>
         <div class="my-courses d-flex gap-4 flex-wrap  rounded-2 pb-3">
+            {{-- <div class="my-courses d-flex gap-4 flex-wrap  rounded-2 pb-3"> --}}
 
             @foreach ($disable_courses as $course)
                 @php
