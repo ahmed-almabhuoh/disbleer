@@ -21,15 +21,16 @@
                         {{ $job->description }}
                     </code>
 
-                    <div class="container mt-5">
-                        <h3>{{ __('Uploaded Files') }}</h3>
-                        <div class="uploaded-files mt-3">
+                    @if (!is_null($job->files))
 
-                            @php
-                                $counter = 1;
-                            @endphp
+                        <div class="container mt-5">
+                            <h3>{{ __('Uploaded Files') }}</h3>
+                            <div class="uploaded-files mt-3">
 
-                            @if (!is_null($job->files))
+                                @php
+                                    $counter = 1;
+                                @endphp
+
                                 @foreach (json_decode($job->files) as $file)
                                     <div class="file">
 
@@ -41,11 +42,11 @@
                                         ++$counter;
                                     @endphp
                                 @endforeach
-                            @endif
 
 
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
 
                 </div>
