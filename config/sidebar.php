@@ -2,13 +2,13 @@
 
 
 return [
-    'dashboard' => [
-        'hasSub' => false,
-        'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
-        'route' => 'backend.dashboard',
-        'permissions' => [],
-    ],
+    // 'dashboard' => [
+    //     'hasSub' => false,
+    //     'subs' => [],
+    //     'icon' => '<i class="bi bi-grid"></i>',
+    //     'route' => 'backend.dashboard',
+    //     'permissions' => [],
+    // ],
 
     'Account Settings' => [
         'hasSub' => false,
