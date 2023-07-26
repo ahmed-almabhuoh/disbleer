@@ -53,7 +53,7 @@
         }
 
         function deleteAdmin(id, refrance) {
-            axios.delete('/cpanel/managers/' + id)
+            axios.delete('/cpanel/supervisors/' + id)
                 .then((response) => {
                     refrance.closest('tr').remove();
                     showDeletingMessage(response.data);
