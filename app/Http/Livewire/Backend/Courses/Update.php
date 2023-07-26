@@ -101,7 +101,7 @@ class Update extends Component
         $course->status = $data['status'];
         $course->category_id = $data['selectedCategory'];
         $course->type = $data['type'];
-        // $course->slug = Str::slug($data['name']);
+        $course->slug = $this->course->slug;
         $course->link = $data['courseLink'];
         $course->pre_courses = json_encode($data['pre_courses']);
 
