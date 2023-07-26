@@ -179,6 +179,7 @@ return [
         'subs' => [
             ['title' => 'Jobs', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'jobs.index'],
             ['title' => 'Add Job', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'jobs.create'],
+            ['title' => 'Published Jobs', 'icon' => '<i class="bi bi-grid"></i>', 'route' => 'jobs.published'],
         ],
         'icon' => '<i class="bi bi-pc-display"></i>',
         'route' => '#',
@@ -187,6 +188,7 @@ return [
             'update-job' => 'index',
             'delete-job' => 'index',
             'show-jobs' => 'sidebar',
+            'published-jobs' => 'sidebar',
         ]
     ],
 

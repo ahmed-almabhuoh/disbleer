@@ -90,4 +90,9 @@ class JobController extends Controller
             'id' => $id,
         ]);
     }
+
+    public function publishedJobs()
+    {
+        return response()->view('backend.jobs.published');
+    }
 }

@@ -64,6 +64,7 @@ Route::prefix('cpanel')->middleware(['auth:manager,supervisor'])->group(function
 
     // Jobs
     Route::get('job/proposals/{id}', [JobController::class, 'getProposals'])->name('jobs.proposals');
+    Route::get('job/published', [JobController::class, 'publishedJobs'])->name('jobs.published');
 });
 
 Route::prefix('cpanel')->middleware(['auth:manager,supervisor,disable'])->group(function () {

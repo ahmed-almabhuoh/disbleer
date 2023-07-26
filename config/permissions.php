@@ -98,6 +98,7 @@ return [
         'update-job',
         'delete-job',
         'show-jobs',
+        'published-jobs',
 
 
         // Tags
