@@ -14,7 +14,7 @@ return [
     'profile' => [
         'hasSub' => false,
         'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-person"></i>',
         'route' => 'managers.account',
         'permissions' => [],
         'isSoon' => false,
@@ -23,7 +23,7 @@ return [
     'proposals' => [
         'hasSub' => false,
         'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-envelope-paper"></i>',
         'route' => 'clientv1.proposals',
         'permissions' => [],
         'isSoon' => false,
@@ -32,7 +32,7 @@ return [
     'courses' => [
         'hasSub' => false,
         'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-journal-album"></i>',
         'route' => 'clientv1.courses',
         'permissions' => [],
         'isSoon' => false,
@@ -41,7 +41,7 @@ return [
     'credits' => [
         'hasSub' => false,
         'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-credit-card"></i>',
         'route' => 'clientv1.credits',
         'permissions' => [],
         'isSoon' => false,
@@ -50,7 +50,7 @@ return [
     'chat' => [
         'hasSub' => false,
         'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-chat-right-text"></i>',
         'route' => 'chats.conversations',
         'permissions' => [],
         'isSoon' => false,
@@ -59,7 +59,7 @@ return [
     'logout' => [
         'hasSub' => false,
         'subs' => [],
-        'icon' => '<i class="bi bi-grid"></i>',
+        'icon' => '<i class="bi bi-box-arrow-right"></i>',
         'route' => 'logout',
         'permissions' => [],
         'isSoon' => false,
