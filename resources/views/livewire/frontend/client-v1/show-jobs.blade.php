@@ -69,12 +69,8 @@
         @if (!count($jobs))
             <div class="d-flex flex-column gap-5 mb-2">
                 <h5 class="card-title"> {{ __('No jobs found !!') }} </h5>
-
             </div>
         @endif
-
-        <h5 class="card-title"> {{ $toPrice }} </h5>
-        <h5 class="card-title"> {{ $fromPrice }} </h5>
 
         @foreach ($jobs as $job)
             <div class="d-flex flex-column gap-5 mb-2">
