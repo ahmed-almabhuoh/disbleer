@@ -76,7 +76,8 @@
             <div class="card-body bg-white mb-2">
                 <div>
                     <h5 class="tilte">
-                        {{ $job->title . ' | ' . $job->slug }}
+                        {{-- {{ $job->title . ' | ' . $job->slug }} --}}
+                        {{ __('Job Details') }}
                     </h5>
                     <hr>
 
