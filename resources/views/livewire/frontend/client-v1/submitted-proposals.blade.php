@@ -52,8 +52,7 @@
                         @endphp
                         @if (is_null($proposal->job->supervisor))
                             @php
-                                $creatorId = App\Models\Manager::where('id', $proposal->job->supervisor_id)->first();
-                                dd($creatorId);
+                                $creatorId = App\Models\Manager::where('id', $proposal->job->supervisor_id)->first()->id;
                             @endphp
                         @endif
                         @if (App\Models\Conversation::where([
