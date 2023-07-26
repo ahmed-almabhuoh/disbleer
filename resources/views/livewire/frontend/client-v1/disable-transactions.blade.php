@@ -6,7 +6,7 @@
             placeholder="{{ __('Search transactions by reference ...') }}">
     </div>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered mt-2">
         <thead>
             <tr>
                 <th>#</th>
