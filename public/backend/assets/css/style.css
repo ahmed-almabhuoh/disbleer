@@ -461,7 +461,7 @@ h6 {
   list-style: none;
 }
 
-.header-nav > ul {
+.header-nav>ul {
   margin: 0;
   padding: 0;
 }
@@ -478,7 +478,8 @@ h6 {
 }
 
 .header-nav .nav-profile img {
-  max-height: 36px;
+  width: 30px;
+  height: 30px;
 }
 
 .header-nav .nav-profile span {
@@ -630,6 +631,7 @@ h6 {
 }
 
 @media (min-width: 1200px) {
+
   #main,
   #footer {
     margin-left: 300px;
@@ -643,6 +645,7 @@ h6 {
 }
 
 @media (min-width: 1200px) {
+
   .toggle-sidebar #main,
   .toggle-sidebar #footer {
     margin-left: 0;
@@ -885,7 +888,7 @@ h6 {
 }
 
 /* News & Updates */
-.dashboard .news .post-item + .post-item {
+.dashboard .news .post-item+.post-item {
   margin-top: 15px;
 }
 
@@ -1000,7 +1003,8 @@ h6 {
 # Profie Page
 --------------------------------------------------------------*/
 .profile .profile-card img {
-  max-width: 120px;
+  width: 100px;
+  height: 100px;
 }
 
 .profile .profile-card h2 {
