@@ -69,7 +69,7 @@ class Update extends Component
         $this->tests = $this->course->tests;
         $this->slug = $this->course->slug;
 
-        $courses = Course::byStats('active')->get();
+        $courses = Course::byStatus('active')->get();
         $arr = [];
         foreach ($courses as $course) {
             $arr[$course->id] = $course->name;
