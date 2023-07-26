@@ -2,8 +2,20 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="index.html" class="logo d-flex align-items-center">
-            <img src="assets/img/icon.png" alt="">
-            <span class="d-none d-lg-block"> Disabled</span>
+            @if (auth()->user()->image)
+                <img src="{{ Storage::url(auth()->user()->image) }}" alt="">
+            @endif
+            <span class="d-none d-lg-block">
+
+                @if (auth('manager')->check())
+                    {{ __('Manager') }}
+                @elseif(auth('supervisor')->check())
+                    {{ __('Supervisor') }}
+                @elseif(auth('disable')->check())
+                    {{ __('Disable') }}
+                @endif
+
+            </span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -24,7 +36,7 @@
                 </a>
             </li><!-- End Search Icon-->
 
-            <li class="nav-item dropdown">
+            {{-- <li class="nav-item dropdown">
 
                 <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                     <i class="bi bi-bell"></i>
@@ -163,28 +175,28 @@
 
                 </ul><!-- End Messages Dropdown Items -->
 
-            </li><!-- End Messages Nav -->
+            </li><!-- End Messages Nav --> --}}
 
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     <img src="assets/img/knight.png" alt="Profile" class="rounded-circle">
-                    <span class="d-none d-md-block dropdown-toggle ps-2">M. Fares</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2"> {{ auth()->user()->fname }} </span>
                 </a><!-- End Profile Iamge Icon -->
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                        <h6>Fares Algherbawi</h6>
-                        <span>Web Designer</span>
+                        <h6> {{ auth()->user()->name }}</h6>
+                        {{-- <span>Web Designer</span> --}}
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('managers.account') }}">
                             <i class="bi bi-person"></i>
-                            <span>My Profile</span>
+                            <span> {{ __('My Profile') }} </span>
                         </a>
                     </li>
                     <li>
@@ -192,21 +204,21 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="{{ route('managers.account') }}">
                             <i class="bi bi-gear"></i>
-                            <span>Account Settings</span>
+                            <span> {{ __('Account Settings') }} </span>
                         </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
 
-                    <li>
+                    {{-- <li>
                         <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                             <i class="bi bi-question-circle"></i>
                             <span>Need Help?</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <hr class="dropdown-divider">
                     </li>
