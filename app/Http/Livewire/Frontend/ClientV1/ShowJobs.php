@@ -27,8 +27,8 @@ class ShowJobs extends Component
             ->where(function ($query) {
                 $query->where('title', 'LIKE', '%' . $this->searchTerm . '%')
                     ->orWhere('description', 'LIKE', '%' . $this->searchTerm . '%')
-                    ->orWhere('started_salary', '<=', '%' . $this->fromPrice . '%')
-                    ->orWhere('end_salary', '>=', '%' . $this->toPrice . '%')
+                    ->orWhere('started_salary', '<=',  $this->fromPrice)
+                    ->orWhere('end_salary', '>=', $this->toPrice)
                     ->orWhereHas('tags', function ($tagQuery) {
                         $tagQuery->where('tag', 'LIKE', '%' . $this->searchTerm . '%');
                     });
