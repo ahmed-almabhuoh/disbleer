@@ -37,7 +37,10 @@
                 <tr>
                     <td>{{ $counter }}</td>
                     <td>{{ $proposal->job->title }}</td>
-                    <td style="width: 600px;">{{ $proposal->proposal }}</td>
+                    {{-- <td style="width: 600px;">{{ $proposal->proposal }}</td> --}}
+                    <td style="width: 600px;">
+                        {!! nl2br(e($proposal->proposal)) !!}
+                    </td>
                     <td>{{ $proposal->salary . '$' }}</td>
                     <td>{{ $proposal->period . 'D' }}</td>
                     <td>{{ $proposal->vat . '$' }}</td>
